@@ -1,6 +1,7 @@
 """
 项目配置文件
 """
+import json
 import os
 from dotenv import load_dotenv
 
@@ -84,3 +85,42 @@ os.makedirs(CHROMA_PERSIST_DIR, exist_ok=True)
 for subject_key in SUBJECTS.keys():
     subject_upload_dir = os.path.join(UPLOAD_DIR, subject_key)
     os.makedirs(subject_upload_dir, exist_ok=True)
+
+# 登录与角色：student（仅学科问答、出题）| teacher | admin（可管理知识库等）
+# 可通过环境变量 EDU_USERS_JSON 覆盖，格式示例：
+# {"student":{"password":"s","role":"student"},"teacher":{"password":"t","role":"teacher"}}
+ROLE_STUDENT = "student"
+ROLE_TEACHER = "teacher"
+ROLE_ADMIN = "admin"
+
+
+def _default_auth_users():
+    return {
+        "student": {
+            "password": os.getenv("EDU_STUDENT_PASSWORD", "student123"),
+            "role": ROLE_STUDENT,
+        },
+        "teacher": {
+            "password": os.getenv("EDU_TEACHER_PASSWORD", "teacher123"),
+            "role": ROLE_TEACHER,
+        },
+        "admin": {
+            "password": os.getenv("EDU_ADMIN_PASSWORD", "admin123"),
+            "role": ROLE_ADMIN,
+        },
+    }
+
+
+def load_auth_users():
+    raw = os.getenv("EDU_USERS_JSON", "").strip()
+    if raw:
+        data = json.loads(raw)
+        out = {}
+        for username, v in data.items():
+            if isinstance(v, dict) and "password" in v and "role" in v:
+                out[str(username)] = {
+                    "password": str(v["password"]),
+                    "role": str(v["role"]),
+                }
+        return out if out else _default_auth_users()
+    return _default_auth_users()

@@ -12,7 +12,14 @@ sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspa
 
 from src.rag_engine.engine import MultiSubjectRAGEngine
 from src.core.exercise_generator import ExerciseGenerator
-from config.settings import UPLOAD_DIR, SUBJECTS
+from src.auth import is_staff, verify_login
+from config.settings import (
+    ROLE_ADMIN,
+    ROLE_STUDENT,
+    ROLE_TEACHER,
+    UPLOAD_DIR,
+    SUBJECTS,
+)
 
 # 页面配置
 st.set_page_config(
@@ -110,6 +117,46 @@ def init_session_state():
         st.session_state.user_answers = {}
     if "exercise_submitted" not in st.session_state:
         st.session_state.exercise_submitted = False
+    if "auth_role" not in st.session_state:
+        st.session_state.auth_role = None
+    if "auth_username" not in st.session_state:
+        st.session_state.auth_username = None
+
+
+def _role_label(role: str) -> str:
+    return {
+        ROLE_STUDENT: "学生",
+        ROLE_TEACHER: "教师",
+        ROLE_ADMIN: "管理员",
+    }.get(role, role)
+
+
+def render_login():
+    """未登录时显示登录表单"""
+    st.markdown(
+        '<h1 class="main-header">📚 小学智能教育问答系统</h1>',
+        unsafe_allow_html=True,
+    )
+    st.markdown(
+        """
+        <div style="text-align: center; color: #757575; margin-bottom: 1.5rem;">
+            请先登录。学生账号仅可使用「学科问答」与「出题」；教材上传与知识库管理需教师或管理员账号。
+        </div>
+        """,
+        unsafe_allow_html=True,
+    )
+    _c1, c2, _c3 = st.columns([1, 1.2, 1])
+    with c2:
+        username = st.text_input("用户名", key="login_username")
+        password = st.text_input("密码", type="password", key="login_password")
+        if st.button("登录", type="primary", use_container_width=True):
+            role = verify_login(username, password)
+            if role:
+                st.session_state.auth_role = role
+                st.session_state.auth_username = username.strip()
+                st.rerun()
+            else:
+                st.error("用户名或密码错误")
 
 
 def get_rag_engine(subject: str):
@@ -117,9 +164,19 @@ def get_rag_engine(subject: str):
     return st.session_state.rag_engines.get_engine(subject)
 
 
-def render_sidebar():
-    """渲染侧边栏"""
+def render_sidebar(staff: bool):
+    """渲染侧边栏。staff 为 False（学生）时不展示教材上传与知识库危险操作。"""
     with st.sidebar:
+        user = st.session_state.auth_username or ""
+        role = st.session_state.auth_role or ""
+        st.markdown(f"**已登录：** {user}（{_role_label(role)}）")
+        if st.button("退出登录", use_container_width=True):
+            st.session_state.auth_role = None
+            st.session_state.auth_username = None
+            st.rerun()
+
+        st.markdown("---")
+
         # 学科选择
         st.markdown("### 📚 选择学科")
 
@@ -157,51 +214,55 @@ def render_sidebar():
         </div>
         """, unsafe_allow_html=True)
 
-        # 显示所有学科知识库概览
-        with st.expander("📊 全部学科概览"):
-            all_info = st.session_state.rag_engines.get_all_subjects_info()
-            for sk, si in all_info.items():
-                st.markdown(f"""
-                <div class="subject-card">
-                    {si['subject_icon']} <strong>{si['subject_name']}</strong><br>
-                    文档块: {si['document_count']}
-                </div>
-                """, unsafe_allow_html=True)
+        if staff:
+            # 显示所有学科知识库概览
+            with st.expander("📊 全部学科概览"):
+                all_info = st.session_state.rag_engines.get_all_subjects_info()
+                for sk, si in all_info.items():
+                    st.markdown(f"""
+                    <div class="subject-card">
+                        {si['subject_icon']} <strong>{si['subject_name']}</strong><br>
+                        文档块: {si['document_count']}
+                    </div>
+                    """, unsafe_allow_html=True)
 
-        st.markdown("---")
+            st.markdown("---")
 
-        # 文档上传区域
-        st.markdown("### 📤 上传教材")
-        uploaded_files = st.file_uploader(
-            f"上传{subject_info['name']}教材",
-            type=["pdf", "docx", "doc"],
-            accept_multiple_files=True,
-            help="支持PDF和Word格式的教材文件"
-        )
+            # 文档上传区域
+            st.markdown("### 📤 上传教材")
+            uploaded_files = st.file_uploader(
+                f"上传{subject_info['name']}教材",
+                type=["pdf", "docx", "doc"],
+                accept_multiple_files=True,
+                help="支持PDF和Word格式的教材文件",
+            )
 
-        if uploaded_files:
-            if st.button("添加到知识库", type="primary"):
-                for uploaded_file in uploaded_files:
-                    # 保存到学科专属目录
-                    subject_upload_dir = os.path.join(UPLOAD_DIR, current_subject)
-                    os.makedirs(subject_upload_dir, exist_ok=True)
-                    file_path = os.path.join(subject_upload_dir, uploaded_file.name)
+            if uploaded_files:
+                if st.button("添加到知识库", type="primary"):
+                    for uploaded_file in uploaded_files:
+                        subject_upload_dir = os.path.join(UPLOAD_DIR, current_subject)
+                        os.makedirs(subject_upload_dir, exist_ok=True)
+                        file_path = os.path.join(subject_upload_dir, uploaded_file.name)
 
-                    with open(file_path, "wb") as f:
-                        f.write(uploaded_file.getbuffer())
+                        with open(file_path, "wb") as f:
+                            f.write(uploaded_file.getbuffer())
 
-                    # 添加到知识库
-                    with st.spinner(f"正在处理: {uploaded_file.name}"):
-                        result = engine.add_document(file_path)
+                        with st.spinner(f"正在处理: {uploaded_file.name}"):
+                            result = engine.add_document(file_path)
 
-                    if result["success"]:
-                        st.success(f"✅ {uploaded_file.name}: {result['message']}")
-                    else:
-                        st.error(f"❌ {uploaded_file.name}: {result['message']}")
+                        if result["success"]:
+                            st.success(f"✅ {uploaded_file.name}: {result['message']}")
+                        else:
+                            st.error(f"❌ {uploaded_file.name}: {result['message']}")
 
-                st.rerun()
+                    st.rerun()
 
-        st.markdown("---")
+            st.markdown("---")
+        else:
+            st.caption(
+                "教材上传与知识库管理由教师/管理员操作；你可使用学科问答与出题。"
+            )
+            st.markdown("---")
 
         # 设置选项
         st.markdown("### ⚙️ 设置")
@@ -220,18 +281,20 @@ def render_sidebar():
                 st.rerun()
 
         with col2:
-            if st.button("清空知识库", use_container_width=True):
-                if st.session_state.get("confirm_clear"):
-                    result = engine.clear_knowledge_base()
-                    if result["success"]:
-                        st.success(result["message"])
-                        st.session_state.confirm_clear = False
-                        st.rerun()
+            if staff:
+                if st.button("清空知识库", use_container_width=True):
+                    if st.session_state.get("confirm_clear"):
+                        result = engine.clear_knowledge_base()
+                        if result["success"]:
+                            st.success(result["message"])
+                            st.session_state.confirm_clear = False
+                            st.rerun()
+                        else:
+                            st.error(result["message"])
                     else:
-                        st.error(result["message"])
-                else:
-                    st.session_state.confirm_clear = True
-                    st.warning("再次点击确认清空")
+                        st.session_state.confirm_clear = True
+                        st.warning("再次点击确认清空")
+            # 学生无「清空知识库」权限，第二列留空以保持布局
 
         return use_rag, show_sources
 
@@ -281,7 +344,7 @@ def render_exercise_page(use_rag: bool):
     current_subject = st.session_state.current_subject
     subject_info = SUBJECTS[current_subject]
 
-    st.markdown(f"### 📝 {subject_info['name']}练习题")
+    st.markdown(f"### 📝 {subject_info['name']} · 出题")
 
     # 练习题设置
     col1, col2, col3 = st.columns([2, 2, 1])
@@ -479,6 +542,10 @@ def main():
     """主函数"""
     init_session_state()
 
+    if st.session_state.auth_role is None:
+        render_login()
+        st.stop()
+
     # 标题
     current_subject = st.session_state.current_subject
     subject_info = SUBJECTS[current_subject]
@@ -491,15 +558,14 @@ def main():
     </div>
     """, unsafe_allow_html=True)
 
-    # 渲染侧边栏
-    use_rag, show_sources = render_sidebar()
+    staff = is_staff(st.session_state.auth_role)
+    use_rag, show_sources = render_sidebar(staff)
 
-    # 主内容区 - 标签页
-    tab1, tab2 = st.tabs(["💬 智能问答", "📝 练习题"])
+    # 主内容区 - 标签页（学生仅可使用学科问答与出题）
+    tab1, tab2 = st.tabs(["💬 学科问答", "📝 出题"])
 
     with tab1:
-        # 问答区
-        st.markdown("### 💬 问答区")
+        st.markdown("### 💬 学科问答")
 
         # 显示聊天历史
         render_chat_history(current_subject)
