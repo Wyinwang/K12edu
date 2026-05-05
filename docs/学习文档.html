@@ -1,0 +1,1160 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>小学智能教育问答系统 - 学习文档</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            line-height: 1.8;
+            color: #333;
+            background-color: #f5f5f5;
+            padding: 20px;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #1E88E5;
+            font-size: 2.2em;
+            text-align: center;
+            margin-bottom: 10px;
+            border-bottom: 3px solid #1E88E5;
+            padding-bottom: 15px;
+        }
+        .subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 30px;
+            font-size: 1.1em;
+        }
+        h2 {
+            color: #1565C0;
+            font-size: 1.6em;
+            margin-top: 35px;
+            margin-bottom: 15px;
+            border-left: 4px solid #1E88E5;
+            padding-left: 12px;
+        }
+        h3 {
+            color: #0D47A1;
+            font-size: 1.3em;
+            margin-top: 25px;
+            margin-bottom: 12px;
+        }
+        h4 {
+            color: #1976D2;
+            font-size: 1.1em;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+        p {
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+        ul, ol {
+            margin: 15px 0;
+            padding-left: 25px;
+        }
+        li {
+            margin-bottom: 8px;
+        }
+        pre {
+            background: #263238;
+            color: #eee;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            font-family: "Consolas", "Monaco", monospace;
+            font-size: 0.9em;
+            margin: 15px 0;
+        }
+        code {
+            background: #e8e8e8;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: "Consolas", "Monaco", monospace;
+        }
+        pre code {
+            background: none;
+            padding: 0;
+        }
+        .highlight {
+            background: #E3F2FD;
+            padding: 15px 20px;
+            border-radius: 5px;
+            border-left: 4px solid #1E88E5;
+            margin: 15px 0;
+        }
+        .note {
+            background: #FFF8E1;
+            padding: 15px 20px;
+            border-radius: 5px;
+            border-left: 4px solid #FFA000;
+            margin: 15px 0;
+        }
+        .tip {
+            background: #E8F5E9;
+            padding: 15px 20px;
+            border-radius: 5px;
+            border-left: 4px solid #4CAF50;
+            margin: 15px 0;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+        th {
+            background: #1E88E5;
+            color: white;
+        }
+        tr:nth-child(even) {
+            background: #f9f9f9;
+        }
+        .arch-diagram {
+            background: #f0f7ff;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            font-family: monospace;
+            margin: 20px 0;
+            border: 1px solid #90CAF9;
+        }
+        .file-tree {
+            background: #f8f8f8;
+            padding: 15px 20px;
+            border-radius: 5px;
+            font-family: monospace;
+            margin: 15px 0;
+        }
+        .chapter-num {
+            display: inline-block;
+            background: #1E88E5;
+            color: white;
+            width: 30px;
+            height: 30px;
+            text-align: center;
+            line-height: 30px;
+            border-radius: 50%;
+            margin-right: 10px;
+            font-size: 0.9em;
+        }
+        .toc {
+            background: #E3F2FD;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+        }
+        .toc h3 {
+            margin-top: 0;
+            color: #1565C0;
+        }
+        .toc ul {
+            list-style: none;
+            padding: 0;
+        }
+        .toc li {
+            padding: 5px 0;
+        }
+        .toc a {
+            color: #1976D2;
+            text-decoration: none;
+        }
+        .toc a:hover {
+            text-decoration: underline;
+        }
+        .footer {
+            text-align: center;
+            color: #666;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #ddd;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>小学智能教育问答系统</h1>
+        <p class="subtitle">毕业设计项目学习文档 | 基于RAG技术的智能教育应用</p>
+
+        <div class="toc">
+            <h3>目录</h3>
+            <ul>
+                <li><a href="#chapter1">第一章 项目概述</a></li>
+                <li><a href="#chapter2">第二章 核心技术原理</a></li>
+                <li><a href="#chapter3">第三章 系统架构设计</a></li>
+                <li><a href="#chapter4">第四章 模块详解</a></li>
+                <li><a href="#chapter5">第五章 数据库设计</a></li>
+                <li><a href="#chapter6">第六章 关键代码解析</a></li>
+                <li><a href="#chapter7">第七章 系统使用指南</a></li>
+                <li><a href="#chapter8">第八章 技术要点总结</a></li>
+            </ul>
+        </div>
+
+        <!-- 第一章 -->
+        <h2 id="chapter1"><span class="chapter-num">1</span>项目概述</h2>
+
+        <h3>1.1 项目背景</h3>
+        <p>本项目是一个基于<strong>检索增强生成（RAG）</strong>技术的Python小学智能教育问答系统。系统通过上传教材文档构建知识库，结合大语言模型的能力，为小学生提供准确、专业的学习辅导。</p>
+
+        <h3>1.2 项目目标</h3>
+        <ul>
+            <li>实现多学科（语文、数学、英语）智能问答</li>
+            <li>基于上传教材提供准确的知识解答</li>
+            <li>自动生成练习题并支持答题评估</li>
+            <li>跟踪学习进度，分析薄弱知识点</li>
+            <li>支持多角色用户管理（学生、教师、管理员）</li>
+        </ul>
+
+        <h3>1.3 核心特性</h3>
+        <table>
+            <tr>
+                <th>特性</th>
+                <th>说明</th>
+            </tr>
+            <tr>
+                <td>RAG技术</td>
+                <td>结合知识库检索和大语言模型，提高回答准确性</td>
+            </tr>
+            <tr>
+                <td>教材上传</td>
+                <td>支持PDF和Word格式教材上传</td>
+            </tr>
+            <tr>
+                <td>智能分块</td>
+                <td>自动将教材内容分块存储</td>
+            </tr>
+            <tr>
+                <td>向量检索</td>
+                <td>基于语义相似度的智能检索</td>
+            </tr>
+            <tr>
+                <td>练习题生成</td>
+                <td>AI自动生成选择题、填空题、判断题等</td>
+            </tr>
+            <tr>
+                <td>学习跟踪</td>
+                <td>记录学习进度，生成错题本</td>
+            </tr>
+            <tr>
+                <td>多LLM支持</td>
+                <td>支持通义千问、DeepSeek、Ollama等多个模型</td>
+            </tr>
+        </table>
+
+        <!-- 第二章 -->
+        <h2 id="chapter2"><span class="chapter-num">2</span>核心技术原理</h2>
+
+        <h3>2.1 RAG（检索增强生成）技术</h3>
+        <div class="highlight">
+            <strong>RAG是什么？</strong><br>
+            RAG = Retrieval-Augmented Generation（检索增强生成），是一种将<strong>信息检索</strong>与<strong>大语言模型生成</strong>相结合的技术。
+        </div>
+
+        <h4>为什么需要RAG？</h4>
+        <p>大语言模型虽然知识丰富，但存在以下问题：</p>
+        <ul>
+            <li><strong>幻觉问题</strong>：可能生成不准确或虚构的内容</li>
+            <li><strong>知识时效性</strong>：无法获取最新的知识</li>
+            <li><strong>专业性不足</strong>：对特定领域知识不够深入</li>
+        </ul>
+
+        <p>RAG通过先检索相关知识，再基于检索结果生成回答，解决了上述问题。</p>
+
+        <h4>RAG工作流程</h4>
+        <div class="arch-diagram">
+            <pre>
+1. 文档摄入 → 上传教材，系统解析和分块
+2. 向量化   → 使用Embedding模型将文本转为向量
+3. 存储     → 将向量存入向量数据库(ChromaDB)
+4. 检索     → 用户提问时，检索最相关的文档块
+5. 生成     → 将检索结果作为上下文，结合LLM生成回答
+            </pre>
+        </div>
+
+        <h3>2.2 向量存储与Embedding</h3>
+
+        <h4>什么是文本向量（Embedding）？</h4>
+        <p>文本向量是将文本转换为数值向量的过程。例如：</p>
+        <div class="note">
+            "语文学习很重要" → [0.23, -0.15, 0.89, 0.42, ...]<br>
+            这些数值代表了文本的语义特征，相似的文本会有相似的向量。
+        </div>
+
+        <h4>向量检索原理</h4>
+        <p>向量检索通过计算<strong>相似度</strong>来找到最相关的文档：</p>
+        <ul>
+            <li><strong>余弦相似度</strong>：计算两个向量夹角的余弦值</li>
+            <li><strong>欧氏距离</strong>：计算两个向量之间的距离</li>
+        </ul>
+        <p>相似度越高，文本越相关。</p>
+
+        <h4>本项目使用的Embedding模型</h4>
+        <ul>
+            <li><strong>通义千问</strong>：text-embedding-v3（阿里云）</li>
+            <li><strong>OpenAI</strong>：text-embedding-3-small</li>
+            <li><strong>Gemini</strong>：models/embedding-001</li>
+        </ul>
+
+        <h3>2.3 大语言模型（LLM）</h3>
+
+        <h4>什么是LLM？</h4>
+        <p>大语言模型是基于Transformer架构的深度学习模型，能够理解和生成人类语言。</p>
+
+        <h4>本项目支持的LLM</h4>
+        <table>
+            <tr>
+                <th>提供商</th>
+                <th>模型</th>
+                <th>特点</th>
+            </tr>
+            <tr>
+                <td>阿里云通义千问</td>
+                <td>qwen3.5-plus</td>
+                <td>中文能力强，适合教育场景</td>
+            </tr>
+            <tr>
+                <td>DeepSeek</td>
+                <td>deepseek-chat</td>
+                <td>性价比高</td>
+            </tr>
+            <tr>
+                <td>字节跳动豆包</td>
+                <td>doubao-pro-32k</td>
+                <td>长文本支持</td>
+            </tr>
+            <tr>
+                <td>Ollama本地</td>
+                <td>qwen2.5:14b</td>
+                <td>本地部署，无需网络</td>
+            </tr>
+        </table>
+
+        <!-- 第三章 -->
+        <h2 id="chapter3"><span class="chapter-num">3</span>系统架构设计</h2>
+
+        <h3>3.1 整体架构</h3>
+        <div class="arch-diagram">
+            <pre>
+┌─────────────────────────────────────────────────────────────┐
+│                     Streamlit Web界面                        │
+│  (用户交互、学科选择、问答显示、练习题、学习进度)              │
+└─────────────────────────────────────────────────────────────┘
+                              │
+                              ▼
+┌─────────────────────────────────────────────────────────────┐
+│                      RAG引擎                                 │
+│  ┌─────────────┐  ┌─────────────┐  ┌─────────────┐        │
+│  │ 文档处理器   │  │  向量存储   │  │   LLM接口   │        │
+│  │ (PDF/DOCX)  │  │ (ChromaDB)  │  │ (统一接口)  │        │
+│  └─────────────┘  └─────────────┘  └─────────────┘        │
+└─────────────────────────────────────────────────────────────┘
+                              │
+                              ▼
+┌─────────────────────────────────────────────────────────────┐
+│                    数据存储层                                │
+│  ┌─────────────┐  ┌─────────────┐  ┌─────────────┐        │
+│  │  向量数据库  │  │   用户数据库 │  │   文件存储   │        │
+│  │  (ChromaDB) │  │   (SQLite)  │  │  (uploads/) │        │
+│  └─────────────┘  └─────────────┘  └─────────────┘        │
+└─────────────────────────────────────────────────────────────┘
+            </pre>
+        </div>
+
+        <h3>3.2 项目目录结构</h3>
+        <div class="file-tree">
+<pre>
+K12edu/
+├── config/                    # 配置文件目录
+│   └── settings.py           # 系统配置（API密钥、模型参数等）
+│
+├── src/                      # 源代码目录
+│   ├── document_processor/   # 文档处理模块
+│   │   └── processor.py      # PDF/DOCX解析和分块
+│   │
+│   ├── rag_engine/           # RAG引擎模块（核心）
+│   │   ├── engine.py         # RAG核心引擎
+│   │   └── vector_store.py   # 向量存储管理
+│   │
+│   ├── llm/                  # 大语言模型模块
+│   │   ├── qwen_llm.py       # 通义千问接口
+│   │   └── unified_llm.py    # 统一LLM接口（多模型支持）
+│   │
+│   ├── core/                 # 核心功能模块
+│   │   └── exercise_generator.py  # 练习题生成器
+│   │
+│   ├── ui/                   # 用户界面模块
+│   │   └── app.py            # Streamlit应用主程序
+│   │
+│   ├── database/             # 数据库模块
+│   │   └── models.py         # 数据模型定义
+│   │
+│   ├── tracking/             # 学习跟踪模块
+│   │   ├── learning_tracker.py    # 学习进度跟踪
+│   │   └── weak_point_analyzer.py # 薄弱知识点分析
+│   │
+│   ├── user/                 # 用户管理模块
+│   │   └── user_manager.py   # 用户增删改查
+│   │
+│   ├── auth.py               # 登录认证
+│   └── utils/                # 工具模块
+│       └── logger.py         # 日志记录
+│
+├── uploads/                  # 上传文件存储目录
+│   ├── chinese/              # 语文教材
+│   ├── math/                 # 数学教材
+│   └── english/              # 英语教材
+│
+├── knowledge_base/           # 向量数据库存储目录
+│   ├── chinese/              # 语文知识库
+│   ├── math/                 # 数学知识库
+│   └── english/              # 英语知识库
+│
+├── main.py                   # 程序入口
+├── init_db.py                # 数据库初始化
+├── requirements.txt          # 项目依赖
+└── README.md                 # 项目说明
+</pre>
+        </div>
+
+        <!-- 第四章 -->
+        <h2 id="chapter4"><span class="chapter-num">4</span>模块详解</h2>
+
+        <h3>4.1 文档处理模块（document_processor）</h3>
+        <p><strong>功能</strong>：解析和分块上传的教材文档</p>
+
+        <h4>核心类：DocumentProcessor</h4>
+        <table>
+            <tr>
+                <th>方法</th>
+                <th>功能</th>
+            </tr>
+            <tr>
+                <td>load_pdf(file_path)</td>
+                <td>加载PDF文件，使用PyPDFLoader</td>
+            </tr>
+            <tr>
+                <td>load_docx(file_path)</td>
+                <td>加载Word文件，使用Docx2txtLoader</td>
+            </tr>
+            <tr>
+                <td>split_documents(documents)</td>
+                <td>将文档分割成文本块</td>
+            </tr>
+            <tr>
+                <td>process_file(file_path)</td>
+                <td>处理单个文件：加载+分块</td>
+            </tr>
+        </table>
+
+        <div class="tip">
+            <strong>文本分块参数</strong><br>
+            chunk_size = 500（每个文本块500字符）<br>
+            chunk_overlap = 50（相邻块重叠50字符，保证连贯性）
+        </div>
+
+        <h3>4.2 向量存储模块（vector_store）</h3>
+        <p><strong>功能</strong>：管理向量数据库，存储和检索文档向量</p>
+
+        <h4>核心类：VectorStore</h4>
+        <table>
+            <tr>
+                <th>方法</th>
+                <th>功能</th>
+            </tr>
+            <tr>
+                <td>create_vectorstore(documents)</td>
+                <td>创建向量存储，将文档转为向量</td>
+            </tr>
+            <tr>
+                <td>load_vectorstore()</td>
+                <td>加载已有的向量存储</td>
+            </tr>
+            <tr>
+                <td>add_documents(documents)</td>
+                <td>添加新文档到向量存储</td>
+            </tr>
+            <tr>
+                <td>similarity_search(query, k)</td>
+                <td>相似度搜索，返回最相关的k个文档</td>
+            </tr>
+            <tr>
+                <td>similarity_search_with_score(query, k)</td>
+                <td>带相似度分数的搜索</td>
+            </tr>
+        </table>
+
+        <p><strong>多学科支持</strong>：每个学科有独立的向量存储目录：</p>
+        <ul>
+            <li>knowledge_base/chinese/ - 语文知识库</li>
+            <li>knowledge_base/math/ - 数学知识库</li>
+            <li>knowledge_base/english/ - 英语知识库</li>
+        </ul>
+
+        <h3>4.3 RAG引擎模块（rag_engine）</h3>
+        <p><strong>功能</strong>：整合文档处理、向量存储和LLM，实现智能问答</p>
+
+        <h4>核心类：RAGEngine</h4>
+        <table>
+            <tr>
+                <th>方法</th>
+                <th>功能</th>
+            </tr>
+            <tr>
+                <td>add_document(file_path)</td>
+                <td>添加文档到知识库</td>
+            </tr>
+            <tr>
+                <td>query(question, use_rag, show_sources)</td>
+                <td>查询问题，返回回答和来源</td>
+            </tr>
+            <tr>
+                <td>query_with_history(question, history, use_rag)</td>
+                <td>带历史对话的查询</td>
+            </tr>
+            <tr>
+                <td>switch_subject(subject)</td>
+                <td>切换学科</td>
+            </tr>
+            <tr>
+                <td>switch_llm(provider, model)</td>
+                <td>切换LLM模型</td>
+            </tr>
+        </table>
+
+        <h4>学科系统提示词</h4>
+        <p>每个学科有专门的系统提示词，指导LLM的回答风格：</p>
+        <div class="note">
+            <strong>语文提示词要点</strong>：使用简单易懂语言，多用比喻，细致讲解汉字词句<br>
+            <strong>数学提示词要点</strong>：用生活例子解释概念，逐步讲解解题思路<br>
+            <strong>英语提示词要点</strong>：标注音标，用生动例子，解析用中文说明
+        </div>
+
+        <h3>4.4 练习题生成模块（exercise_generator）</h3>
+        <p><strong>功能</strong>：基于LLM自动生成各学科练习题</p>
+
+        <h4>支持的题型</h4>
+        <table>
+            <tr>
+                <th>学科</th>
+                <th>支持题型</th>
+            </tr>
+            <tr>
+                <td>语文</td>
+                <td>选择题、填空题、判断题</td>
+            </tr>
+            <tr>
+                <td>数学</td>
+                <td>选择题、填空题、判断题、计算题</td>
+            </tr>
+            <tr>
+                <td>英语</td>
+                <td>选择题、填空题、判断题</td>
+            </tr>
+        </table>
+
+        <h4>生成流程</h4>
+        <ul>
+            <li>从知识库检索相关知识（可选）</li>
+            <li>构造提示词，要求LLM生成JSON格式题目</li>
+            <li>解析LLM返回的JSON，提取题目、答案、解析</li>
+            <li>用户答题后自动评分，记录学习结果</li>
+        </ul>
+
+        <h3>4.5 学习跟踪模块（tracking）</h3>
+        <p><strong>功能</strong>：记录学习进度，分析薄弱知识点</p>
+
+        <h4>LearningTracker - 学习进度跟踪</h4>
+        <ul>
+            <li>record_qa_interaction() - 记录问答交互</li>
+            <li>record_exercise_result() - 记录练习结果</li>
+            <li>get_user_summary() - 获取用户学习概况</li>
+            <li>get_user_accuracy() - 获取正确率统计</li>
+        </ul>
+
+        <h4>WrongQuestionManager - 错题本管理</h4>
+        <ul>
+            <li>add_wrong_question() - 添加错题</li>
+            <li>get_wrong_questions() - 获取错题列表</li>
+            <li>mark_mastered() - 标记已掌握</li>
+        </ul>
+
+        <h4>WeakPointAnalyzer - 薄弱知识点分析</h4>
+        <ul>
+            <li>get_weak_points() - 分析用户薄弱知识点</li>
+        </ul>
+
+        <h3>4.6 用户管理模块（user）</h3>
+        <p><strong>功能</strong>：用户注册、登录、权限管理</p>
+
+        <h4>用户角色</h4>
+        <table>
+            <tr>
+                <th>角色</th>
+                <th>权限</th>
+            </tr>
+            <tr>
+                <td>学生（student）</td>
+                <td>学科问答、练习题、学习进度、错题本</td>
+            </tr>
+            <tr>
+                <td>教师（teacher）</td>
+                <td>学生权限 + 上传教材、班级学情查看</td>
+            </tr>
+            <tr>
+                <td>管理员（admin）</td>
+                <td>教师权限 + 用户管理、知识库管理</td>
+            </tr>
+        </table>
+
+        <!-- 第五章 -->
+        <h2 id="chapter5"><span class="chapter-num">5</span>数据库设计</h2>
+
+        <h3>5.1 数据库类型</h3>
+        <p>本项目使用<strong>SQLite</strong>作为关系数据库，轻量级、无需配置。</p>
+
+        <h3>5.2 主要数据表</h3>
+
+        <h4>users表 - 用户信息</h4>
+        <table>
+            <tr>
+                <th>字段</th>
+                <th>类型</th>
+                <th>说明</th>
+            </tr>
+            <tr>
+                <td>id</td>
+                <td>INTEGER</td>
+                <td>用户ID（主键）</td>
+            </tr>
+            <tr>
+                <td>username</td>
+                <td>TEXT</td>
+                <td>用户名</td>
+            </tr>
+            <tr>
+                <td>password_hash</td>
+                <td>TEXT</td>
+                <td>密码哈希</td>
+            </tr>
+            <tr>
+                <td>role</td>
+                <td>TEXT</td>
+                <td>角色(student/teacher/admin)</td>
+            </tr>
+            <tr>
+                <td>created_at</td>
+                <td>TIMESTAMP</td>
+                <td>创建时间</td>
+            </tr>
+            <tr>
+                <td>last_login_at</td>
+                <td>TIMESTAMP</td>
+                <td>最后登录时间</td>
+            </tr>
+            <tr>
+                <td>is_active</td>
+                <td>BOOLEAN</td>
+                <td>是否激活</td>
+            </tr>
+        </table>
+
+        <h4>qa_interactions表 - 问答记录</h4>
+        <table>
+            <tr>
+                <th>字段</th>
+                <th>类型</th>
+                <th>说明</th>
+            </tr>
+            <tr>
+                <td>id</td>
+                <td>INTEGER</td>
+                <td>记录ID</td>
+            </tr>
+            <tr>
+                <td>user_id</td>
+                <td>INTEGER</td>
+                <td>用户ID</td>
+            </tr>
+            <tr>
+                <td>subject</td>
+                <td>TEXT</td>
+                <td>学科</td>
+            </tr>
+            <tr>
+                <td>question</td>
+                <td>TEXT</td>
+                <td>用户问题</td>
+            </tr>
+            <tr>
+                <td>answer</td>
+                <td>TEXT</td>
+                <td>系统回答</td>
+            </tr>
+            <tr>
+                <td>created_at</td>
+                <td>TIMESTAMP</td>
+                <td>交互时间</td>
+            </tr>
+        </table>
+
+        <h4>exercise_results表 - 练习结果</h4>
+        <table>
+            <tr>
+                <th>字段</th>
+                <th>类型</th>
+                <th>说明</th>
+            </tr>
+            <tr>
+                <td>id</td>
+                <td>INTEGER</td>
+                <td>记录ID</td>
+            </tr>
+            <tr>
+                <td>user_id</td>
+                <td>INTEGER</td>
+                <td>用户ID</td>
+            </tr>
+            <tr>
+                <td>subject</td>
+                <td>TEXT</td>
+                <td>学科</td>
+            </tr>
+            <tr>
+                <td>question</td>
+                <td>TEXT</td>
+                <td>题目内容</td>
+            </tr>
+            <tr>
+                <td>question_type</td>
+                <td>TEXT</td>
+                <td>题型</td>
+            </tr>
+            <tr>
+                <td>user_answer</td>
+                <td>TEXT</td>
+                <td>用户答案</td>
+            </tr>
+            <tr>
+                <td>correct_answer</td>
+                <td>TEXT</td>
+                <td>正确答案</td>
+            </tr>
+            <tr>
+                <td>is_correct</td>
+                <td>BOOLEAN</td>
+                <td>是否正确</td>
+            </tr>
+            <tr>
+                <td>created_at</td>
+                <td>TIMESTAMP</td>
+                <td>答题时间</td>
+            </tr>
+        </table>
+
+        <h4>wrong_questions表 - 错题记录</h4>
+        <table>
+            <tr>
+                <th>字段</th>
+                <th>类型</th>
+                <th>说明</th>
+            </tr>
+            <tr>
+                <td>id</td>
+                <td>INTEGER</td>
+                <td>记录ID</td>
+            </tr>
+            <tr>
+                <td>user_id</td>
+                <td>INTEGER</td>
+                <td>用户ID</td>
+            </tr>
+            <tr>
+                <td>subject</td>
+                <td>TEXT</td>
+                <td>学科</td>
+            </tr>
+            <tr>
+                <td>question</td>
+                <td>TEXT</td>
+                <td>题目内容</td>
+            </tr>
+            <tr>
+                <td>question_type</td>
+                <td>TEXT</td>
+                <td>题型</td>
+            </tr>
+            <tr>
+                <td>correct_answer</td>
+                <td>TEXT</td>
+                <td>正确答案</td>
+            </tr>
+            <tr>
+                <td>user_answer</td>
+                <td>TEXT</td>
+                <td>用户错误答案</td>
+            </tr>
+            <tr>
+                <td>explanation</td>
+                <td>TEXT</td>
+                <td>答案解析</td>
+            </tr>
+            <tr>
+                <td>knowledge_point</td>
+                <td>TEXT</td>
+                <td>知识点标签</td>
+            </tr>
+            <tr>
+                <td>is_mastered</td>
+                <td>BOOLEAN</td>
+                <td>是否已掌握</td>
+            </tr>
+            <tr>
+                <td>created_at</td>
+                <td>TIMESTAMP</td>
+                <td>创建时间</td>
+            </tr>
+        </table>
+
+        <!-- 第六章 -->
+        <h2 id="chapter6"><span class="chapter-num">6</span>关键代码解析</h2>
+
+        <h3>6.1 RAG查询核心代码</h3>
+        <pre><code># src/rag_engine/engine.py - query方法核心逻辑
+
+def query(self, question: str, use_rag: bool = True, show_sources: bool = True):
+    """查询问题的核心方法"""
+    context = None
+    sources = []
+
+    if use_rag:
+        # 1. 检索相关文档
+        results = self.vector_store.similarity_search_with_score(question, k=self.top_k)
+
+        if results:
+            # 2. 构建上下文
+            context_parts = []
+            for doc, score in results:
+                context_parts.append(doc.page_content)  # 文档内容
+                sources.append({
+                    "content": doc.page_content[:200],
+                    "source": doc.metadata.get("source"),
+                    "score": round(1 - score, 4)  # 相似度分数
+                })
+            context = "\n\n---\n\n".join(context_parts)
+
+    # 3. 调用LLM生成回答
+    answer = self.llm.chat(question, context)
+
+    return {
+        "answer": answer,
+        "sources": sources,
+        "used_rag": use_rag and context is not None
+    }</code></pre>
+
+        <div class="tip">
+            <strong>关键点</strong>：query方法先检索相关知识，再将检索结果作为上下文传给LLM，实现RAG流程。
+        </div>
+
+        <h3>6.2 统一LLM接口</h3>
+        <pre><code># src/llm/unified_llm.py - 多LLM支持
+
+class LLMFactory:
+    """LLM工厂类 - 根据配置创建对应的LLM实例"""
+
+    @staticmethod
+    def create_chat_model(provider, model_name, temperature):
+        """创建聊天模型"""
+        if provider == "qwen":
+            return ChatOpenAI(
+                model=model_name or "qwen3.5-plus",
+                api_key=DASHSCOPE_API_KEY,
+                base_url=DASHSCOPE_API_URL
+            )
+        elif provider == "deepseek":
+            return ChatOpenAI(
+                model=model_name or "deepseek-chat",
+                api_key=DEEPSEEK_API_KEY,
+                base_url=DEEPSEEK_API_URL
+            )
+        elif provider == "ollama":
+            return ChatOllama(
+                model=model_name or "qwen2.5:14b",
+                base_url=OLLAMA_BASE_URL
+            )
+        # ... 其他模型</code></pre>
+
+        <div class="note">
+            <strong>设计要点</strong>：使用工厂模式统一不同LLM的接口，通过LangChain的ChatModel实现标准化调用。
+        </div>
+
+        <h3>6.3 文档分块处理</h3>
+        <pre><code># src/document_processor/processor.py
+
+class DocumentProcessor:
+    def __init__(self, chunk_size=500, chunk_overlap=50):
+        """初始化文档处理器"""
+        self.text_splitter = RecursiveCharacterTextSplitter(
+            chunk_size=chunk_size,
+            chunk_overlap=chunk_overlap,
+            separators=["\n\n", "\n", "。", "！", "？", "；", "，", " ", ""]
+        )
+
+    def split_documents(self, documents):
+        """将文档分割成文本块"""
+        return self.text_splitter.split_documents(documents)</code></pre>
+
+        <div class="highlight">
+            <strong>分块策略</strong>：使用RecursiveCharacterTextSplitter，优先按段落(\n\n)分割，再按句子分割，保证语义完整性。重叠50字符确保上下文连贯。
+        </div>
+
+        <h3>6.4 练习题生成提示词</h3>
+        <pre><code># src/core/exercise_generator.py - 数学练习题提示词
+
+SUBJECT_PROMPTS = {
+    "math": """你是一个小学数学老师，请根据以下内容生成练习题。
+
+参考内容：
+{context}
+
+请生成 {count} 道练习题，类型包括：{question_types}。
+
+要求：
+1. 题目难度适合小学生
+2. 计算题要有明确的解题步骤
+3. 应用题要贴近生活实际
+4. 每道题都要有标准答案和解析
+
+请严格按照以下JSON格式输出：
+{
+    "questions": [
+        {
+            "type": "选择题|填空题|判断题|计算题",
+            "question": "题目内容",
+            "options": ["A. 选项1", "B. 选项2", ...],
+            "answer": "正确答案",
+            "explanation": "答案解析"
+        }
+    ]
+}
+"""}</code></pre>
+
+        <!-- 第七章 -->
+        <h2 id="chapter7"><span class="chapter-num">7</span>系统使用指南</h2>
+
+        <h3>7.1 环境准备</h3>
+        <h4>安装Python</h4>
+        <p>确保已安装Python 3.9或更高版本</p>
+
+        <h4>安装依赖</h4>
+        <pre><code># 创建虚拟环境
+python -m venv venv
+
+# 激活虚拟环境
+# Windows:
+venv\Scripts\activate
+# Linux/Mac:
+source venv/bin/activate
+
+# 安装依赖
+pip install -r requirements.txt</code></pre>
+
+        <h4>配置API Key</h4>
+        <p>在.env文件中配置：</p>
+        <pre><code># 通义千问API Key（必需）
+DASHSCOPE_API_KEY=your_api_key_here
+
+# 可选：其他LLM
+DEEPSEEK_API_KEY=...
+OLLAMA_BASE_URL=http://localhost:11434
+
+# 模型选择
+LLM_PROVIDER=qwen  # qwen/deepseek/ollama</code></pre>
+
+        <div class="note">
+            <strong>获取API Key</strong>：访问阿里云DashScope控制台 https://dashscope.console.aliyun.com/ 注册并获取
+        </div>
+
+        <h3>7.2 启动系统</h3>
+        <pre><code># 方式1：使用主程序
+python main.py
+
+# 方式2：直接运行Streamlit
+streamlit run src/ui/app.py</code></pre>
+
+        <p>系统将在浏览器中打开，默认地址 http://localhost:8501</p>
+
+        <h3>7.3 登录账号</h3>
+        <table>
+            <tr>
+                <th>角色</th>
+                <th>用户名</th>
+                <th>密码</th>
+            </tr>
+            <tr>
+                <td>学生</td>
+                <td>student</td>
+                <td>student123</td>
+            </tr>
+            <tr>
+                <td>教师</td>
+                <td>teacher</td>
+                <td>teacher123</td>
+            </tr>
+            <tr>
+                <td>管理员</td>
+                <td>admin</td>
+                <td>admin123</td>
+            </tr>
+        </table>
+
+        <h3>7.4 功能使用</h3>
+
+        <h4>学科问答</h4>
+        <ul>
+            <li>选择学科（语文/数学/英语）</li>
+            <li>输入问题，系统自动检索知识库并生成回答</li>
+            <li>可查看参考来源，了解回答依据</li>
+        </ul>
+
+        <h4>上传教材（教师/管理员）</h4>
+        <ul>
+            <li>在侧边栏点击"上传教材"</li>
+            <li>选择PDF或Word格式文件</li>
+            <li>点击"添加到知识库"</li>
+        </ul>
+
+        <h4>生成练习题</h4>
+        <ul>
+            <li>切换到"出题"标签页</li>
+            <li>设置题目数量和题型</li>
+            <li>可选"基于知识库"生成针对性题目</li>
+            <li>答题后自动评分，错题自动加入错题本</li>
+        </ul>
+
+        <h4>查看学习进度</h4>
+        <ul>
+            <li>切换到"学习进度"标签页</li>
+            <li>查看学习天数、问答次数、正确率统计</li>
+        </ul>
+
+        <h4>错题本</h4>
+        <ul>
+            <li>切换到"错题本"标签页</li>
+            <li>查看错题列表和薄弱知识点分析</li>
+            <li>可标记已掌握或删除错题</li>
+        </ul>
+
+        <!-- 第八章 -->
+        <h2 id="chapter8"><span class="chapter-num">8</span>技术要点总结</h2>
+
+        <h3>8.1 核心技术栈</h3>
+        <table>
+            <tr>
+                <th>技术</th>
+                <th>用途</th>
+                <th>说明</th>
+            </tr>
+            <tr>
+                <td>LangChain</td>
+                <td>LLM框架</td>
+                <td>统一LLM接口、文档处理、向量存储</td>
+            </tr>
+            <tr>
+                <td>ChromaDB</td>
+                <td>向量数据库</td>
+                <td>存储文档向量，支持相似度检索</td>
+            </tr>
+            <tr>
+                <td>Streamlit</td>
+                <td>Web界面</td>
+                <td>快速构建交互式Web应用</td>
+            </tr>
+            <tr>
+                <td>SQLite</td>
+                <td>关系数据库</td>
+                <td>存储用户、学习记录等数据</td>
+            </tr>
+            <tr>
+                <td>通义千问</td>
+                <td>大语言模型</td>
+                <td>生成回答和练习题</td>
+            </tr>
+        </table>
+
+        <h3>8.2 设计模式</h3>
+        <ul>
+            <li><strong>工厂模式</strong>：LLMFactory统一创建不同LLM实例</li>
+            <li><strong>单例模式</strong>：MultiSubjectRAGEngine管理多个学科引擎</li>
+            <li><strong>模块化设计</strong>：各功能模块独立，便于维护扩展</li>
+        </ul>
+
+        <h3>8.3 关键配置参数</h3>
+        <table>
+            <tr>
+                <th>参数</th>
+                <th>默认值</th>
+                <th>说明</th>
+            </tr>
+            <tr>
+                <td>CHUNK_SIZE</td>
+                <td>500</td>
+                <td>文本分块大小</td>
+            </tr>
+            <tr>
+                <td>CHUNK_OVERLAP</td>
+                <td>50</td>
+                <td>分块重叠大小</td>
+            </tr>
+            <tr>
+                <td>TOP_K</td>
+                <td>3</td>
+                <td>检索返回文档数量</td>
+            </tr>
+            <tr>
+                <td>LLM_PROVIDER</td>
+                <td>qwen</td>
+                <td>LLM提供商</td>
+            </tr>
+            <tr>
+                <td>EMBEDDING_MODEL</td>
+                <td>text-embedding-v3</td>
+                <td>向量嵌入模型</td>
+            </tr>
+        </table>
+
+        <h3>8.4 扩展方向</h3>
+        <div class="tip">
+            <strong>可扩展的功能</strong><br>
+            1. 支持更多学科（科学、历史等）<br>
+            2. 添加语音问答功能<br>
+            3. 实现个性化学习路径推荐<br>
+            4. 支持多媒体教材（图片、视频）<br>
+            5. 集成作业批改功能
+        </div>
+
+        <div class="footer">
+            <p>小学智能教育问答系统学习文档</p>
+            <p>毕业设计项目 | 2025年</p>
+        </div>
+    </div>
+</body>
+</html>

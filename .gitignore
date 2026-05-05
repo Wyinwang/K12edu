@@ -44,6 +44,12 @@ uploads/*
 knowledge_base/*
 !knowledge_base/.gitkeep
 
+# 数据库文件
+data/
+*.db
+*.sqlite
+*.sqlite3
+
 # 日志
 *.log
 logs/

@@ -12,8 +12,8 @@ import sys
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
 from src.document_processor.processor import DocumentProcessor
 from src.rag_engine.vector_store import VectorStore, MultiSubjectVectorStore
-from src.llm.qwen_llm import QwenLLM
-from config.settings import CHUNK_SIZE, CHUNK_OVERLAP, TOP_K, SUBJECTS, UPLOAD_DIR
+from src.llm.unified_llm import UnifiedLLM
+from config.settings import CHUNK_SIZE, CHUNK_OVERLAP, TOP_K, SUBJECTS, UPLOAD_DIR, LLM_PROVIDER, DASHSCOPE_MODEL, OLLAMA_MODEL
 from src.utils.logger import rag_logger
 
 
@@ -58,7 +58,9 @@ class RAGEngine:
         subject: str = "chinese",
         chunk_size: int = CHUNK_SIZE,
         chunk_overlap: int = CHUNK_OVERLAP,
-        top_k: int = TOP_K
+        top_k: int = TOP_K,
+        llm_provider: str = None,
+        llm_model: str = None
     ):
         """
         初始化RAG引擎
@@ -68,6 +70,8 @@ class RAGEngine:
             chunk_size: 文本块大小
             chunk_overlap: 文本块重叠大小
             top_k: 检索时返回的文档数量
+            llm_provider: LLM提供商 (qwen/ollama)
+            llm_model: LLM模型名称
         """
         if subject not in SUBJECTS:
             rag_logger.error(f"不支持的学科类型: {subject}")
@@ -77,9 +81,12 @@ class RAGEngine:
         self.chunk_size = chunk_size
         self.chunk_overlap = chunk_overlap
         self.top_k = top_k
+        self.llm_provider = llm_provider or LLM_PROVIDER
+        self.llm_model = llm_model
 
         rag_logger.info(f"========== 初始化RAG引擎 ==========")
         rag_logger.info(f"学科: {subject}, chunk_size: {chunk_size}, chunk_overlap: {chunk_overlap}, top_k: {top_k}")
+        rag_logger.info(f"LLM提供商: {self.llm_provider}, LLM模型: {self.llm_model}")
 
         # 初始化各组件
         self.doc_processor = DocumentProcessor(
@@ -87,7 +94,7 @@ class RAGEngine:
             chunk_overlap=chunk_overlap
         )
         self.vector_store = VectorStore(subject)
-        self.llm = QwenLLM()
+        self.llm = UnifiedLLM(provider=self.llm_provider, model_name=self.llm_model)
 
         # 设置学科相关的系统提示词
         self.llm.system_prompt = self.SUBJECT_PROMPTS.get(subject, self.SUBJECT_PROMPTS["chinese"])
@@ -128,6 +135,21 @@ class RAGEngine:
         self.llm.system_prompt = self.SUBJECT_PROMPTS.get(subject, self.SUBJECT_PROMPTS["chinese"])
         self._load_existing_vectorstore()
         rag_logger.info(f"学科切换完成: {subject}")
+
+    def switch_llm(self, provider: str, model: str = None) -> None:
+        """
+        切换LLM模型
+
+        Args:
+            provider: LLM提供商 (qwen/ollama)
+            model: LLM模型名称
+        """
+        rag_logger.info(f"切换LLM: {self.llm_provider}/{self.llm_model} -> {provider}/{model}")
+        self.llm_provider = provider
+        self.llm_model = model
+        self.llm = UnifiedLLM(provider=provider, model_name=model)
+        self.llm.system_prompt = self.SUBJECT_PROMPTS.get(self.subject, self.SUBJECT_PROMPTS["chinese"])
+        rag_logger.info(f"LLM切换完成: {provider}/{model}")
 
     def add_document(self, file_path: str) -> Dict[str, Any]:
         """
@@ -375,11 +397,19 @@ class RAGEngine:
 class MultiSubjectRAGEngine:
     """多学科RAG引擎管理器"""
 
+    # 可用的LLM模型选项
+    AVAILABLE_LLM_OPTIONS = [
+        {"provider": "qwen", "model": "qwen3.5-plus", "name": "阿里云 Qwen3.5-Plus"},
+        {"provider": "ollama", "model": "qwen2.5:14b", "name": "本地 Ollama Qwen2.5-14B"},
+    ]
+
     def __init__(
         self,
         chunk_size: int = CHUNK_SIZE,
         chunk_overlap: int = CHUNK_OVERLAP,
-        top_k: int = TOP_K
+        top_k: int = TOP_K,
+        llm_provider: str = None,
+        llm_model: str = None
     ):
         """
         初始化多学科RAG引擎管理器
@@ -388,10 +418,14 @@ class MultiSubjectRAGEngine:
             chunk_size: 文本块大小
             chunk_overlap: 文本块重叠大小
             top_k: 检索时返回的文档数量
+            llm_provider: LLM提供商
+            llm_model: LLM模型名称
         """
         self.chunk_size = chunk_size
         self.chunk_overlap = chunk_overlap
         self.top_k = top_k
+        self.llm_provider = llm_provider or LLM_PROVIDER
+        self.llm_model = llm_model
         self._engines: Dict[str, RAGEngine] = {}
 
     def get_engine(self, subject: str) -> RAGEngine:
@@ -409,9 +443,25 @@ class MultiSubjectRAGEngine:
                 subject=subject,
                 chunk_size=self.chunk_size,
                 chunk_overlap=self.chunk_overlap,
-                top_k=self.top_k
+                top_k=self.top_k,
+                llm_provider=self.llm_provider,
+                llm_model=self.llm_model
             )
         return self._engines[subject]
+
+    def switch_llm(self, provider: str, model: str = None) -> None:
+        """
+        切换所有引擎的LLM模型
+
+        Args:
+            provider: LLM提供商
+            model: LLM模型名称
+        """
+        self.llm_provider = provider
+        self.llm_model = model
+        # 更新所有已创建的引擎
+        for engine in self._engines.values():
+            engine.switch_llm(provider, model)
 
     def get_all_subjects_info(self) -> Dict[str, Dict]:
         """

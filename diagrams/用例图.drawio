@@ -1,0 +1,183 @@
+<mxfile host="app.diagrams.net" modified="2026-04-18T00:00:00.000Z" agent="5.0" version="21.0.0" type="device">
+  <diagram name="用例图" id="usecase-diagram">
+    <mxGraphModel dx="1200" dy="800" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1200" pageHeight="900" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <!-- 系统边界 -->
+        <mxCell id="system-boundary" value="小学智能教育问答系统" style="shape=umlFrame;whiteSpace=wrap;html=1;width=120;height=30;boundedLbl=1;verticalAlign=top;align=left;spacingLeft=5;fontSize=14;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="280" y="40" width="740" height="760" as="geometry" />
+        </mxCell>
+
+        <!-- 参与者 - 学生 -->
+        <mxCell id="actor-student" value="学生" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;fontSize=12" vertex="1" parent="1">
+          <mxGeometry x="80" y="200" width="40" height="80" as="geometry" />
+        </mxCell>
+
+        <!-- 参与者 - 教师 -->
+        <mxCell id="actor-teacher" value="教师" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;fontSize=12" vertex="1" parent="1">
+          <mxGeometry x="80" y="380" width="40" height="80" as="geometry" />
+        </mxCell>
+
+        <!-- 参与者 - 管理员 -->
+        <mxCell id="actor-admin" value="管理员" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;fontSize=12" vertex="1" parent="1">
+          <mxGeometry x="80" y="560" width="40" height="80" as="geometry" />
+        </mxCell>
+
+        <!-- 参与者 - 系统外部（LLM服务） -->
+        <mxCell id="actor-llm" value="LLM服务" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;fontSize=12" vertex="1" parent="1">
+          <mxGeometry x="1080" y="280" width="40" height="80" as="geometry" />
+        </mxCell>
+
+        <!-- 用例 - 登录 -->
+        <mxCell id="uc-login" value="登录系统" style="ellipse;whiteSpace=wrap;html=1;fontSize=12" vertex="1" parent="1">
+          <mxGeometry x="440" y="80" width="120" height="50" as="geometry" />
+        </mxCell>
+
+        <!-- 用例 - 学科问答 -->
+        <mxCell id="uc-qa" value="学科问答" style="ellipse;whiteSpace=wrap;html=1;fontSize=12" vertex="1" parent="1">
+          <mxGeometry x="320" y="180" width="120" height="50" as="geometry" />
+        </mxCell>
+
+        <!-- 用例 - 出题 -->
+        <mxCell id="uc-exercise" value="生成练习题" style="ellipse;whiteSpace=wrap;html=1;fontSize=12" vertex="1" parent="1">
+          <mxGeometry x="320" y="260" width="120" height="50" as="geometry" />
+        </mxCell>
+
+        <!-- 用例 - 学习进度 -->
+        <mxCell id="uc-progress" value="查看学习进度" style="ellipse;whiteSpace=wrap;html=1;fontSize=12" vertex="1" parent="1">
+          <mxGeometry x="320" y="340" width="120" height="50" as="geometry" />
+        </mxCell>
+
+        <!-- 用例 - 错题本 -->
+        <mxCell id="uc-wrong" value="查看错题本" style="ellipse;whiteSpace=wrap;html=1;fontSize=12" vertex="1" parent="1">
+          <mxGeometry x="320" y="420" width="120" height="50" as="geometry" />
+        </mxCell>
+
+        <!-- 用例 - 上传教材 -->
+        <mxCell id="uc-upload" value="上传教材" style="ellipse;whiteSpace=wrap;html=1;fontSize=12" vertex="1" parent="1">
+          <mxGeometry x="320" y="500" width="120" height="50" as="geometry" />
+        </mxCell>
+
+        <!-- 用例 - 知识库管理 -->
+        <mxCell id="uc-kb" value="管理知识库" style="ellipse;whiteSpace=wrap;html=1;fontSize=12" vertex="1" parent="1">
+          <mxGeometry x="320" y="580" width="120" height="50" as="geometry" />
+        </mxCell>
+
+        <!-- 用例 - 班级学情 -->
+        <mxCell id="uc-class" value="查看班级学情" style="ellipse;whiteSpace=wrap;html=1;fontSize=12" vertex="1" parent="1">
+          <mxGeometry x="320" y="660" width="120" height="50" as="geometry" />
+        </mxCell>
+
+        <!-- 用例 - 用户管理 -->
+        <mxCell id="uc-user" value="用户管理" style="ellipse;whiteSpace=wrap;html=1;fontSize=12" vertex="1" parent="1">
+          <mxGeometry x="320" y="740" width="120" height="50" as="geometry" />
+        </mxCell>
+
+        <!-- 用例 - 选择学科 -->
+        <mxCell id="uc-subject" value="选择学科" style="ellipse;whiteSpace=wrap;html=1;fontSize=12" vertex="1" parent="1">
+          <mxGeometry x="560" y="180" width="100" height="50" as="geometry" />
+        </mxCell>
+
+        <!-- 用例 - 选择模型 -->
+        <mxCell id="uc-model" value="选择LLM模型" style="ellipse;whiteSpace=wrap;html=1;fontSize=12" vertex="1" parent="1">
+          <mxGeometry x="560" y="260" width="100" height="50" as="geometry" />
+        </mxCell>
+
+        <!-- 用例 - RAG检索 -->
+        <mxCell id="uc-rag" value="RAG检索" style="ellipse;whiteSpace=wrap;html=1;fontSize=12" vertex="1" parent="1">
+          <mxGeometry x="720" y="220" width="100" height="50" as="geometry" />
+        </mxCell>
+
+        <!-- 用例 - 调用LLM -->
+        <mxCell id="uc-call-llm" value="调用LLM生成回答" style="ellipse;whiteSpace=wrap;html=1;fontSize=12" vertex="1" parent="1">
+          <mxGeometry x="720" y="300" width="120" height="50" as="geometry" />
+        </mxCell>
+
+        <!-- 关联线 - 学生 -->
+        <mxCell id="link-student-login" style="endArrow=none;html=1;rounded=0" edge="1" parent="1" source="actor-student" target="uc-login">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="link-student-qa" style="endArrow=none;html=1;rounded=0" edge="1" parent="1" source="actor-student" target="uc-qa">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="link-student-exercise" style="endArrow=none;html=1;rounded=0" edge="1" parent="1" source="actor-student" target="uc-exercise">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="link-student-progress" style="endArrow=none;html=1;rounded=0" edge="1" parent="1" source="actor-student" target="uc-progress">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="link-student-wrong" style="endArrow=none;html=1;rounded=0" edge="1" parent="1" source="actor-student" target="uc-wrong">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- 关联线 - 教师 -->
+        <mxCell id="link-teacher-login" style="endArrow=none;html=1;rounded=0" edge="1" parent="1" source="actor-teacher" target="uc-login">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="link-teacher-upload" style="endArrow=none;html=1;rounded=0" edge="1" parent="1" source="actor-teacher" target="uc-upload">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="link-teacher-kb" style="endArrow=none;html=1;rounded=0" edge="1" parent="1" source="actor-teacher" target="uc-kb">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="link-teacher-class" style="endArrow=none;html=1;rounded=0" edge="1" parent="1" source="actor-teacher" target="uc-class">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- 关联线 - 管理员 -->
+        <mxCell id="link-admin-login" style="endArrow=none;html=1;rounded=0" edge="1" parent="1" source="actor-admin" target="uc-login">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="link-admin-upload" style="endArrow=none;html=1;rounded=0" edge="1" parent="1" source="actor-admin" target="uc-upload">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="link-admin-kb" style="endArrow=none;html=1;rounded=0" edge="1" parent="1" source="actor-admin" target="uc-kb">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="link-admin-user" style="endArrow=none;html=1;rounded=0" edge="1" parent="1" source="actor-admin" target="uc-user">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- 包含关系 include -->
+        <mxCell id="include-qa-subject" value="&lt;&lt;include&gt;&gt;" style="endArrow=open;html=1;rounded=0;dashed=1;fontSize=10" edge="1" parent="1" source="uc-qa" target="uc-subject">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="include-exercise-subject" value="&lt;&lt;include&gt;&gt;" style="endArrow=open;html=1;rounded=0;dashed=1;fontSize=10" edge="1" parent="1" source="uc-exercise" target="uc-subject">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="include-qa-rag" value="&lt;&lt;include&gt;&gt;" style="endArrow=open;html=1;rounded=0;dashed=1;fontSize=10" edge="1" parent="1" source="uc-qa" target="uc-rag">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="include-qa-llm" value="&lt;&lt;include&gt;&gt;" style="endArrow=open;html=1;rounded=0;dashed=1;fontSize=10" edge="1" parent="1" source="uc-qa" target="uc-call-llm">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- 扩展关系 extend -->
+        <mxCell id="extend-model-qa" value="&lt;&lt;extend&gt;&gt;" style="endArrow=open;html=1;rounded=0;dashed=1;fontSize=10" edge="1" parent="1" source="uc-model" target="uc-qa">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="extend-rag-exercise" value="&lt;&lt;extend&gt;&gt;" style="endArrow=open;html=1;rounded=0;dashed=1;fontSize=10" edge="1" parent="1" source="uc-rag" target="uc-exercise">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- 关联线 - LLM服务 -->
+        <mxCell id="link-llm-call" style="endArrow=none;html=1;rounded=0" edge="1" parent="1" source="actor-llm" target="uc-call-llm">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- 继承关系 - 教师继承学生功能 -->
+        <mxCell id="inherit-teacher" value="" style="endArrow=open;html=1;rounded=0;endFill=0;dashed=1;strokeWidth=2" edge="1" parent="1" source="actor-teacher" target="actor-student">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- 继承关系 - 管理员继承教师功能 -->
+        <mxCell id="inherit-admin" value="" style="endArrow=open;html=1;rounded=0;endFill=0;dashed=1;strokeWidth=2" edge="1" parent="1" source="actor-admin" target="actor-teacher">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

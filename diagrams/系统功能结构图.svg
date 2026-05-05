@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="800" viewBox="0 0 1000 800">
+  <!-- 背景 -->
+  <rect width="1000" height="800" fill="white"/>
+
+  <!-- 标题 -->
+  <text x="500" y="35" text-anchor="middle" font-family="Microsoft YaHei, SimHei, sans-serif" font-size="22" font-weight="bold" fill="#333">小学智能教育问答系统 - 功能结构图</text>
+
+  <!-- ========== 用户界面层 ========== -->
+  <rect x="50" y="60" width="900" height="130" fill="none" stroke="#333" stroke-width="2" rx="5"/>
+  <text x="500" y="85" text-anchor="middle" font-family="Microsoft YaHei, SimHei, sans-serif" font-size="14" font-weight="bold" fill="#333">用户界面层 (Streamlit Web UI)</text>
+
+  <!-- 界面功能模块 -->
+  <rect x="70" y="100" width="120" height="75" fill="#f5f5f5" stroke="#333" stroke-width="1.5" rx="3"/>
+  <text x="130" y="125" text-anchor="middle" font-family="Microsoft YaHei, SimHei, sans-serif" font-size="12" fill="#333">学科问答</text>
+  <text x="130" y="145" text-anchor="middle" font-family="Microsoft YaHei, SimHei, sans-serif" font-size="10" fill="#666">语文/数学/英语</text>
+  <text x="130" y="162" text-anchor="middle" font-family="Microsoft YaHei, SimHei, sans-serif" font-size="10" fill="#666">智能问答交互</text>
+
+  <rect x="210" y="100" width="120" height="75" fill="#f5f5f5" stroke="#333" stroke-width="1.5" rx="3"/>
+  <text x="270" y="125" text-anchor="middle" font-family="Microsoft YaHei, SimHei, sans-serif" font-size="12" fill="#333">出题练习</text>
+  <text x="270" y="145" text-anchor="middle" font-family="Microsoft YaHei, SimHei, sans-serif" font-size="10" fill="#666">选择题/填空题</text>
+  <text x="270" y="162" text-anchor="middle" font-family="Microsoft YaHei, SimHei, sans-serif" font-size="10" fill="#666">判断题/计算题</text>
+
+  <rect x="350" y="100" width="120" height="75" fill="#f5f5f5" stroke="#333" stroke-width="1.5" rx="3"/>
+  <text x="410" y="125" text-anchor="middle" font-family="Microsoft YaHei, SimHei, sans-serif" font-size="12" fill="#333">学习进度</text>
+  <text x="410" y="145" text-anchor="middle" font-family="Microsoft YaHei, SimHei, sans-serif" font-size="10" fill="#666">学习天数统计</text>
+  <text x="410" y="162" text-anchor="middle" font-family="Microsoft YaHei, SimHei, sans-serif" font-size="10" fill="#666">正确率趋势</text>
+
+  <rect x="490" y="100" width="120" height="75" fill="#f5f5f5" stroke="#333" stroke-width="1.5" rx="3"/>
+  <text x="550" y="125" text-anchor="middle" font-family="Microsoft YaHei, SimHei, sans-serif" font-size="12" fill="#333">错题本</text>
+  <text x="550" y="145" text-anchor="middle" font-family="Microsoft YaHei, SimHei, sans-serif" font-size="10" fill="#666">错题管理</text>
+  <text x="550" y="162" text-anchor="middle" font-family="Microsoft YaHei, SimHei, sans-serif" font-size="10" fill="#666">薄弱点分析</text>
+
+  <rect x="630" y="100" width="120" height="75" fill="#f5f5f5" stroke="#333" stroke-width="1.5" rx="3"/>
+  <text x="690" y="125" text-anchor="middle" font-family="Microsoft YaHei, SimHei, sans-serif" font-size="12" fill="#333">知识库管理</text>
+  <text x="690" y="145" text-anchor="middle" font-family="Microsoft YaHei, SimHei, sans-serif" font-size="10" fill="#666">文档上传</text>
+  <text x="690" y="162" text-anchor="middle" font-family="Microsoft YaHei, SimHei, sans-serif" font-size="10" fill="#666">知识库清空</text>
+
+  <rect x="770" y="100" width="120" height="75" fill="#f5f5f5" stroke="#333" stroke-width="1.5" rx="3"/>
+  <text x="830" y="125" text-anchor="middle" font-family="Microsoft YaHei, SimHei, sans-serif" font-size="12" fill="#333">用户管理</text>
+  <text x="830" y="145" text-anchor="middle" font-family="Microsoft YaHei, SimHei, sans-serif" font-size="10" fill="#666">用户CRUD</text>
+  <text x="830" y="162" text-anchor="middle" font-family="Microsoft YaHei, SimHei, sans-serif" font-size="10" fill="#666">班级学情概览</text>
+
+  <!-- 连接箭头 UI -> 业务逻辑 -->
+  <line x1="500" y1="190" x2="500" y2="210" stroke="#333" stroke-width="1.5" marker-end="url(#arrowhead)"/>
+
+  <!-- ========== 业务逻辑层 ========== -->
+  <rect x="50" y="210" width="900" height="130" fill="none" stroke="#333" stroke-width="2" rx="5"/>
+  <text x="500" y="235" text-anchor="middle" font-family="Microsoft YaHei, SimHei, sans-serif" font-size="14" font-weight="bold" fill="#333">业务逻辑层</text>
+
+  <!-- 业务模块 -->
+  <rect x="70" y="250" width="200" height="75" fill="#f5f5f5" stroke="#333" stroke-width="1.5" rx="3"/>
+  <text x="170" y="275" text-anchor="middle" font-family="Microsoft YaHei, SimHei, sans-serif" font-size="12" fill="#333">RAG引擎</text>
+  <text x="170" y="295" text-anchor="middle" font-family="Microsoft YaHei, SimHei, sans-serif" font-size="10" fill="#666">文档检索 / 答案生成</text>
+  <text x="170" y="312" text-anchor="middle" font-family="Microsoft YaHei, SimHei, sans-serif" font-size="10" fill="#666">多学科引擎管理</text>
+
+  <rect x="290" y="250" width="200" height="75" fill="#f5f5f5" stroke="#333" stroke-width="1.5" rx="3"/>
+  <text x="390" y="275" text-anchor="middle" font-family="Microsoft YaHei, SimHei, sans-serif" font-size="12" fill="#333">练习题生成器</text>
+  <text x="390" y="295" text-anchor="middle" font-family="Microsoft YaHei, SimHei, sans-serif" font-size="10" fill="#666">基于LLM生成题目</text>
+  <text x="390" y="312" text-anchor="middle" font-family="Microsoft YaHei, SimHei, sans-serif" font-size="10" fill="#666">答案校验评估</text>
+
+  <rect x="510" y="250" width="200" height="75" fill="#f5f5f5" stroke="#333" stroke-width="1.5" rx="3"/>
+  <text x="610" y="275" text-anchor="middle" font-family="Microsoft YaHei, SimHei, sans-serif" font-size="12" fill="#333">学习进度跟踪</text>
+  <text x="610" y="295" text-anchor="middle" font-family="Microsoft YaHei, SimHei, sans-serif" font-size="10" fill="#666">问答/练习记录</text>
+  <text x="610" y="312" text-anchor="middle" font-family="Microsoft YaHei, SimHei, sans-serif" font-size="10" fill="#666">学习报告生成</text>
+
+  <rect x="730" y="250" width="200" height="75" fill="#f5f5f5" stroke="#333" stroke-width="1.5" rx="3"/>
+  <text x="830" y="275" text-anchor="middle" font-family="Microsoft YaHei, SimHei, sans-serif" font-size="12" fill="#333">薄弱点分析</text>
+  <text x="830" y="295" text-anchor="middle" font-family="Microsoft YaHei, SimHei, sans-serif" font-size="10" fill="#666">知识点提取</text>
+  <text x="830" y="312" text-anchor="middle" font-family="Microsoft YaHei, SimHei, sans-serif" font-size="10" fill="#666">薄弱点诊断报告</text>
+
+  <!-- 连接箭头 业务逻辑 -> 核心服务 -->
+  <line x1="500" y1="340" x2="500" y2="360" stroke="#333" stroke-width="1.5" marker-end="url(#arrowhead)"/>
+
+  <!-- ========== 核心服务层 ========== -->
+  <rect x="50" y="360" width="900" height="130" fill="none" stroke="#333" stroke-width="2" rx="5"/>
+  <text x="500" y="385" text-anchor="middle" font-family="Microsoft YaHei, SimHei, sans-serif" font-size="14" font-weight="bold" fill="#333">核心服务层</text>
+
+  <!-- 服务模块 -->
+  <rect x="70" y="400" width="200" height="75" fill="#f5f5f5" stroke="#333" stroke-width="1.5" rx="3"/>
+  <text x="170" y="425" text-anchor="middle" font-family="Microsoft YaHei, SimHei, sans-serif" font-size="12" fill="#333">LLM统一接口</text>
+  <text x="170" y="445" text-anchor="middle" font-family="Microsoft YaHei, SimHei, sans-serif" font-size="10" fill="#666">通义千问/DeepSeek</text>
+  <text x="170" y="462" text-anchor="middle" font-family="Microsoft YaHei, SimHei, sans-serif" font-size="10" fill="#666">Gemini/Ollama等</text>
+
+  <rect x="290" y="400" width="200" height="75" fill="#f5f5f5" stroke="#333" stroke-width="1.5" rx="3"/>
+  <text x="390" y="425" text-anchor="middle" font-family="Microsoft YaHei, SimHei, sans-serif" font-size="12" fill="#333">向量存储管理</text>
+  <text x="390" y="445" text-anchor="middle" font-family="Microsoft YaHei, SimHei, sans-serif" font-size="10" fill="#666">ChromaDB向量库</text>
+  <text x="390" y="462" text-anchor="middle" font-family="Microsoft YaHei, SimHei, sans-serif" font-size="10" fill="#666">多Embedding支持</text>
+
+  <rect x="510" y="400" width="200" height="75" fill="#f5f5f5" stroke="#333" stroke-width="1.5" rx="3"/>
+  <text x="610" y="425" text-anchor="middle" font-family="Microsoft YaHei, SimHei, sans-serif" font-size="12" fill="#333">文档处理器</text>
+  <text x="610" y="445" text-anchor="middle" font-family="Microsoft YaHei, SimHei, sans-serif" font-size="10" fill="#666">PDF/DOCX解析</text>
+  <text x="610" y="462" text-anchor="middle" font-family="Microsoft YaHei, SimHei, sans-serif" font-size="10" fill="#666">智能文本分块</text>
+
+  <rect x="730" y="400" width="200" height="75" fill="#f5f5f5" stroke="#333" stroke-width="1.5" rx="3"/>
+  <text x="830" y="425" text-anchor="middle" font-family="Microsoft YaHei, SimHei, sans-serif" font-size="12" fill="#333">用户认证</text>
+  <text x="830" y="445" text-anchor="middle" font-family="Microsoft YaHei, SimHei, sans-serif" font-size="10" fill="#666">登录验证</text>
+  <text x="830" y="462" text-anchor="middle" font-family="Microsoft YaHei, SimHei, sans-serif" font-size="10" fill="#666">权限分级管理</text>
+
+  <!-- 连接箭头 核心服务 -> 数据持久 -->
+  <line x1="500" y1="490" x2="500" y2="510" stroke="#333" stroke-width="1.5" marker-end="url(#arrowhead)"/>
+
+  <!-- ========== 数据持久层 ========== -->
+  <rect x="50" y="510" width="900" height="100" fill="none" stroke="#333" stroke-width="2" rx="5"/>
+  <text x="500" y="535" text-anchor="middle" font-family="Microsoft YaHei, SimHei, sans-serif" font-size="14" font-weight="bold" fill="#333">数据持久层</text>
+
+  <!-- 数据模块 -->
+  <rect x="100" y="550" width="220" height="50" fill="#f5f5f5" stroke="#333" stroke-width="1.5" rx="3"/>
+  <text x="210" y="572" text-anchor="middle" font-family="Microsoft YaHei, SimHei, sans-serif" font-size="12" fill="#333">SQLite数据库</text>
+  <text x="210" y="590" text-anchor="middle" font-family="Microsoft YaHei, SimHei, sans-serif" font-size="10" fill="#666">用户/学习记录/错题表</text>
+
+  <rect x="390" y="550" width="220" height="50" fill="#f5f5f5" stroke="#333" stroke-width="1.5" rx="3"/>
+  <text x="500" y="572" text-anchor="middle" font-family="Microsoft YaHei, SimHei, sans-serif" font-size="12" fill="#333">ChromaDB向量库</text>
+  <text x="500" y="590" text-anchor="middle" font-family="Microsoft YaHei, SimHei, sans-serif" font-size="10" fill="#666">知识库向量存储</text>
+
+  <rect x="680" y="550" width="220" height="50" fill="#f5f5f5" stroke="#333" stroke-width="1.5" rx="3"/>
+  <text x="790" y="572" text-anchor="middle" font-family="Microsoft YaHei, SimHei, sans-serif" font-size="12" fill="#333">文件系统存储</text>
+  <text x="790" y="590" text-anchor="middle" font-family="Microsoft YaHei, SimHei, sans-serif" font-size="10" fill="#666">uploads/知识库文件</text>
+
+  <!-- ========== 外部服务 ========== -->
+  <rect x="50" y="640" width="900" height="70" fill="none" stroke="#333" stroke-width="2" rx="5"/>
+  <text x="500" y="665" text-anchor="middle" font-family="Microsoft YaHei, SimHei, sans-serif" font-size="14" font-weight="bold" fill="#333">外部服务</text>
+
+  <rect x="100" y="680" width="150" height="20" fill="#f5f5f5" stroke="#333" stroke-width="1" rx="2"/>
+  <text x="175" y="694" text-anchor="middle" font-family="Microsoft YaHei, SimHei, sans-serif" font-size="10" fill="#333">阿里云通义千问 API</text>
+
+  <rect x="280" y="680" width="120" height="20" fill="#f5f5f5" stroke="#333" stroke-width="1" rx="2"/>
+  <text x="340" y="694" text-anchor="middle" font-family="Microsoft YaHei, SimHei, sans-serif" font-size="10" fill="#333">DeepSeek API</text>
+
+  <rect x="420" y="680" width="120" height="20" fill="#f5f5f5" stroke="#333" stroke-width="1" rx="2"/>
+  <text x="480" y="694" text-anchor="middle" font-family="Microsoft YaHei, SimHei, sans-serif" font-size="10" fill="#333">Google Gemini</text>
+
+  <rect x="560" y="680" width="100" height="20" fill="#f5f5f5" stroke="#333" stroke-width="1" rx="2"/>
+  <text x="610" y="694" text-anchor="middle" font-family="Microsoft YaHei, SimHei, sans-serif" font-size="10" fill="#333">OpenAI API</text>
+
+  <rect x="680" y="680" width="100" height="20" fill="#f5f5f5" stroke="#333" stroke-width="1" rx="2"/>
+  <text x="730" y="694" text-anchor="middle" font-family="Microsoft YaHei, SimHei, sans-serif" font-size="10" fill="#333">本地 Ollama</text>
+
+  <rect x="800" y="680" width="120" height="20" fill="#f5f5f5" stroke="#333" stroke-width="1" rx="2"/>
+  <text x="860" y="694" text-anchor="middle" font-family="Microsoft YaHei, SimHei, sans-serif" font-size="10" fill="#333">腾讯混元/豆包</text>
+
+  <!-- 箭头定义 -->
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#333"/>
+    </marker>
+  </defs>
+
+  <!-- 权限说明 -->
+  <rect x="50" y="730" width="900" height="55" fill="none" stroke="#333" stroke-width="1" stroke-dasharray="5,5" rx="3"/>
+  <text x="500" y="750" text-anchor="middle" font-family="Microsoft YaHei, SimHei, sans-serif" font-size="11" fill="#555">用户角色权限: 学生(问答/练习/进度/错题本) | 教师(+知识库管理/班级学情) | 管理员(+用户管理)</text>
+  <text x="500" y="770" text-anchor="middle" font-family="Microsoft YaHei, SimHei, sans-serif" font-size="11" fill="#555">技术栈: Streamlit + LangChain + ChromaDB + SQLite | 学科: 语文 / 数学 / 英语</text>
+</svg>

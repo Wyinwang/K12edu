@@ -15,8 +15,8 @@ import sys
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
 from config.settings import (
     DASHSCOPE_API_KEY, OPENAI_API_KEY, GEMINI_API_KEY,
-    CHROMA_PERSIST_DIR, EMBEDDING_MODEL, EMBEDDING_PROVIDER,
-    SUBJECTS
+    EMBEDDING_API_KEY, EMBEDDING_MODEL, EMBEDDING_PROVIDER,
+    CHROMA_PERSIST_DIR, SUBJECTS
 )
 from src.utils.logger import vectorstore_logger
 
@@ -33,27 +33,30 @@ def create_embeddings(provider: Optional[str] = None, model_name: Optional[str] 
         Embeddings实例
     """
     provider = provider or EMBEDDING_PROVIDER
-    vectorstore_logger.info(f"创建Embedding模型 - 提供商: {provider}, 模型: {model_name or EMBEDDING_MODEL}")
+    model_name = model_name or EMBEDDING_MODEL
+    vectorstore_logger.info(f"创建Embedding模型 - 提供商: {provider}, 模型: {model_name}")
 
     if provider == "qwen":
         from langchain_community.embeddings import DashScopeEmbeddings
         vectorstore_logger.info("使用通义千问 Embedding模型")
+        # 使用专门的 Embedding API Key 或默认使用 DASHSCOPE_API_KEY
+        api_key = EMBEDDING_API_KEY or DASHSCOPE_API_KEY
         return DashScopeEmbeddings(
-            model=model_name or EMBEDDING_MODEL,
-            dashscope_api_key=DASHSCOPE_API_KEY
+            model=model_name,
+            dashscope_api_key=api_key
         )
     elif provider == "openai":
         from langchain_openai import OpenAIEmbeddings
         vectorstore_logger.info("使用OpenAI Embedding模型")
         return OpenAIEmbeddings(
-            model=model_name or EMBEDDING_MODEL,
+            model=model_name,
             openai_api_key=OPENAI_API_KEY
         )
     elif provider == "gemini":
         from langchain_google_genai import GoogleGenerativeAIEmbeddings
         vectorstore_logger.info("使用Gemini Embedding模型")
         return GoogleGenerativeAIEmbeddings(
-            model=model_name or EMBEDDING_MODEL,
+            model=model_name,
             google_api_key=GEMINI_API_KEY
         )
     else:

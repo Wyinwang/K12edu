@@ -11,15 +11,19 @@ load_dotenv()
 # API配置 - 多LLM提供商支持
 # 通义千问 (阿里云)
 DASHSCOPE_API_KEY = os.getenv("DASHSCOPE_API_KEY", "")
+DASHSCOPE_API_URL = os.getenv("DASHSCOPE_API_URL", "https://coding.dashscope.aliyuncs.com/v1")
+DASHSCOPE_MODEL = os.getenv("DASHSCOPE_MODEL", "qwen3.5-plus")
 
 # DeepSeek
 DEEPSEEK_API_KEY = os.getenv("DEEPSEEK_API_KEY", "")
+DEEPSEEK_API_URL = os.getenv("DEEPSEEK_API_URL", "https://api.deepseek.com/v1")
 
 # 字节跳动 (头条/豆包)
 TOUTIAO_API_KEY = os.getenv("TOUTIAO_API_KEY", "")
 
 # 腾讯混元
 HUNYUAN_API_KEY = os.getenv("HUNYUAN_API_KEY", "")
+HUNYUAN_SECRET_ID = os.getenv("HUNYUAN_SECRET_ID", "")
 
 # OpenAI
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY", "")
@@ -27,11 +31,15 @@ OPENAI_API_KEY = os.getenv("OPENAI_API_KEY", "")
 # Gemini (Google)
 GEMINI_API_KEY = os.getenv("GEMINI_API_KEY", "")
 
-# 当前使用的LLM提供商: qwen, deepseek, toutiao, hunyuan, openai, gemini
+# Ollama 本地LLM
+OLLAMA_BASE_URL = os.getenv("OLLAMA_BASE_URL", "http://localhost:11434")
+OLLAMA_MODEL = os.getenv("OLLAMA_MODEL", "qwen2.5:14b")
+
+# 当前使用的LLM提供商: qwen, deepseek, toutiao, hunyuan, openai, gemini, ollama
 LLM_PROVIDER = os.getenv("LLM_PROVIDER", "qwen")
 
 # 模型配置
-QWEN_MODEL = os.getenv("QWEN_MODEL", "qwen-turbo")
+QWEN_MODEL = os.getenv("QWEN_MODEL", "qwen3.5-plus")  # 兼容旧配置
 DEEPSEEK_MODEL = os.getenv("DEEPSEEK_MODEL", "deepseek-chat")
 TOUTIAO_MODEL = os.getenv("TOUTIAO_MODEL", "doubao-pro-32k")
 HUNYUAN_MODEL = os.getenv("HUNYUAN_MODEL", "hunyuan-lite")
@@ -41,12 +49,13 @@ GEMINI_MODEL = os.getenv("GEMINI_MODEL", "gemini-pro")
 # Embedding配置
 # 当前使用的Embedding提供商: qwen, openai, gemini
 EMBEDDING_PROVIDER = os.getenv("EMBEDDING_PROVIDER", "qwen")
+EMBEDDING_API_KEY = os.getenv("EMBEDDING_API_KEY", DASHSCOPE_API_KEY)
 
 # Embedding模型配置
 # 通义千问: text-embedding-v2, text-embedding-v3
 # OpenAI: text-embedding-3-small, text-embedding-3-large, text-embedding-ada-002
 # Gemini: models/embedding-001, models/text-embedding-004
-EMBEDDING_MODEL = os.getenv("EMBEDDING_MODEL", "text-embedding-v2")
+EMBEDDING_MODEL = os.getenv("EMBEDDING_MODEL", "text-embedding-v3")
 
 # 路径配置
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))

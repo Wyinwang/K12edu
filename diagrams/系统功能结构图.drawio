@@ -1,0 +1,298 @@
+<mxfile host="app.diagrams.net" agent="Claude">
+  <diagram name="系统功能结构图" id="0">
+    <mxGraphModel dx="1501" dy="913" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1600" pageHeight="1200" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=20;fontStyle=1" value="基于Python的小学智能教育问答系统" vertex="1">
+          <mxGeometry height="40" width="800" x="400" y="40" as="geometry" />
+        </mxCell>
+        <mxCell id="line_main" edge="1" parent="1" source="title" style="edgeStyle=none;html=1;strokeColor=#000000;strokeWidth=2;endArrow=none;startArrow=none">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="user_main" parent="1" style="rounded=1;whiteSpace=wrap;html=1;strokeColor=#000000;strokeWidth=2;fillColor=none;fontSize=16;fontStyle=1" value="用户管理" vertex="1">
+          <mxGeometry height="50" width="160" x="40" y="120" as="geometry" />
+        </mxCell>
+        <mxCell id="user_line" edge="1" parent="1" source="user_main" style="edgeStyle=none;html=1;strokeColor=#000000;strokeWidth=1;endArrow=none;startArrow=none">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="120" y="170" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="user_1" parent="1" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#000000;strokeWidth=1;fillColor=none;fontSize=12" value="用户注册" vertex="1">
+          <mxGeometry height="35" width="100" x="20" y="190" as="geometry" />
+        </mxCell>
+        <mxCell id="user_2" parent="1" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#000000;strokeWidth=1;fillColor=none;fontSize=12" value="用户登录" vertex="1">
+          <mxGeometry height="35" width="100" x="20" y="235" as="geometry" />
+        </mxCell>
+        <mxCell id="user_3" parent="1" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#000000;strokeWidth=1;fillColor=none;fontSize=12" value="信息修改" vertex="1">
+          <mxGeometry height="35" width="100" x="20" y="280" as="geometry" />
+        </mxCell>
+        <mxCell id="user_4" parent="1" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#000000;strokeWidth=1;fillColor=none;fontSize=12" value="用户删除" vertex="1">
+          <mxGeometry height="35" width="100" x="130" y="190" as="geometry" />
+        </mxCell>
+        <mxCell id="user_5" parent="1" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#000000;strokeWidth=1;fillColor=none;fontSize=12" value="权限管理" vertex="1">
+          <mxGeometry height="35" width="100" x="130" y="235" as="geometry" />
+        </mxCell>
+        <mxCell id="user_6" parent="1" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#000000;strokeWidth=1;fillColor=none;fontSize=12" value="角色分配" vertex="1">
+          <mxGeometry height="35" width="100" x="130" y="280" as="geometry" />
+        </mxCell>
+        <mxCell id="user_line_1" edge="1" parent="1" source="user_main" style="edgeStyle=none;html=1;strokeColor=#000000;strokeWidth=1;endArrow=none;startArrow=none" target="user_1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="user_line_2" edge="1" parent="1" source="user_main" style="edgeStyle=none;html=1;strokeColor=#000000;strokeWidth=1;endArrow=none;startArrow=none" target="user_2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="user_line_3" edge="1" parent="1" source="user_main" style="edgeStyle=none;html=1;strokeColor=#000000;strokeWidth=1;endArrow=none;startArrow=none" target="user_3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="user_line_4" edge="1" parent="1" source="user_main" style="edgeStyle=none;html=1;strokeColor=#000000;strokeWidth=1;endArrow=none;startArrow=none" target="user_4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="user_line_5" edge="1" parent="1" source="user_main" style="edgeStyle=none;html=1;strokeColor=#000000;strokeWidth=1;endArrow=none;startArrow=none" target="user_5">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="user_line_6" edge="1" parent="1" source="user_main" style="edgeStyle=none;html=1;strokeColor=#000000;strokeWidth=1;endArrow=none;startArrow=none" target="user_6">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="qa_main" parent="1" style="rounded=1;whiteSpace=wrap;html=1;strokeColor=#000000;strokeWidth=2;fillColor=none;fontSize=16;fontStyle=1" value="智能问答" vertex="1">
+          <mxGeometry height="50" width="160" x="280" y="120" as="geometry" />
+        </mxCell>
+        <mxCell id="qa_line" edge="1" parent="1" source="qa_main" style="edgeStyle=none;html=1;strokeColor=#000000;strokeWidth=1;endArrow=none;startArrow=none">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="360" y="170" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="qa_1" parent="1" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#000000;strokeWidth=1;fillColor=none;fontSize=12" value="语文问答" vertex="1">
+          <mxGeometry height="35" width="100" x="260" y="190" as="geometry" />
+        </mxCell>
+        <mxCell id="qa_2" parent="1" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#000000;strokeWidth=1;fillColor=none;fontSize=12" value="数学问答" vertex="1">
+          <mxGeometry height="35" width="100" x="260" y="235" as="geometry" />
+        </mxCell>
+        <mxCell id="qa_3" parent="1" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#000000;strokeWidth=1;fillColor=none;fontSize=12" value="英语问答" vertex="1">
+          <mxGeometry height="35" width="100" x="260" y="280" as="geometry" />
+        </mxCell>
+        <mxCell id="qa_4" parent="1" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#000000;strokeWidth=1;fillColor=none;fontSize=12" value="RAG检索" vertex="1">
+          <mxGeometry height="35" width="100" x="370" y="190" as="geometry" />
+        </mxCell>
+        <mxCell id="qa_5" parent="1" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#000000;strokeWidth=1;fillColor=none;fontSize=12" value="知识检索" vertex="1">
+          <mxGeometry height="35" width="100" x="370" y="235" as="geometry" />
+        </mxCell>
+        <mxCell id="qa_6" parent="1" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#000000;strokeWidth=1;fillColor=none;fontSize=12" value="对话历史" vertex="1">
+          <mxGeometry height="35" width="100" x="370" y="280" as="geometry" />
+        </mxCell>
+        <mxCell id="qa_line_1" edge="1" parent="1" source="qa_main" style="edgeStyle=none;html=1;strokeColor=#000000;strokeWidth=1;endArrow=none;startArrow=none" target="qa_1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="qa_line_2" edge="1" parent="1" source="qa_main" style="edgeStyle=none;html=1;strokeColor=#000000;strokeWidth=1;endArrow=none;startArrow=none" target="qa_2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="qa_line_3" edge="1" parent="1" source="qa_main" style="edgeStyle=none;html=1;strokeColor=#000000;strokeWidth=1;endArrow=none;startArrow=none" target="qa_3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="qa_line_4" edge="1" parent="1" source="qa_main" style="edgeStyle=none;html=1;strokeColor=#000000;strokeWidth=1;endArrow=none;startArrow=none" target="qa_4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="qa_line_5" edge="1" parent="1" source="qa_main" style="edgeStyle=none;html=1;strokeColor=#000000;strokeWidth=1;endArrow=none;startArrow=none" target="qa_5">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="qa_line_6" edge="1" parent="1" source="qa_main" style="edgeStyle=none;html=1;strokeColor=#000000;strokeWidth=1;endArrow=none;startArrow=none" target="qa_6">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="exercise_main" parent="1" style="rounded=1;whiteSpace=wrap;html=1;strokeColor=#000000;strokeWidth=2;fillColor=none;fontSize=16;fontStyle=1" value="练习系统" vertex="1">
+          <mxGeometry height="50" width="160" x="520" y="120" as="geometry" />
+        </mxCell>
+        <mxCell id="exercise_line" edge="1" parent="1" source="exercise_main" style="edgeStyle=none;html=1;strokeColor=#000000;strokeWidth=1;endArrow=none;startArrow=none">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="600" y="170" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="exercise_1" parent="1" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#000000;strokeWidth=1;fillColor=none;fontSize=12" value="题目生成" vertex="1">
+          <mxGeometry height="35" width="100" x="500" y="190" as="geometry" />
+        </mxCell>
+        <mxCell id="exercise_2" parent="1" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#000000;strokeWidth=1;fillColor=none;fontSize=12" value="选择题" vertex="1">
+          <mxGeometry height="35" width="100" x="500" y="235" as="geometry" />
+        </mxCell>
+        <mxCell id="exercise_3" parent="1" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#000000;strokeWidth=1;fillColor=none;fontSize=12" value="填空题" vertex="1">
+          <mxGeometry height="35" width="100" x="500" y="280" as="geometry" />
+        </mxCell>
+        <mxCell id="exercise_4" parent="1" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#000000;strokeWidth=1;fillColor=none;fontSize=12" value="判断题" vertex="1">
+          <mxGeometry height="35" width="100" x="610" y="190" as="geometry" />
+        </mxCell>
+        <mxCell id="exercise_5" parent="1" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#000000;strokeWidth=1;fillColor=none;fontSize=12" value="计算题" vertex="1">
+          <mxGeometry height="35" width="100" x="610" y="235" as="geometry" />
+        </mxCell>
+        <mxCell id="exercise_6" parent="1" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#000000;strokeWidth=1;fillColor=none;fontSize=12" value="答案评估" vertex="1">
+          <mxGeometry height="35" width="100" x="610" y="280" as="geometry" />
+        </mxCell>
+        <mxCell id="exercise_line_1" edge="1" parent="1" source="exercise_main" style="edgeStyle=none;html=1;strokeColor=#000000;strokeWidth=1;endArrow=none;startArrow=none" target="exercise_1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="exercise_line_2" edge="1" parent="1" source="exercise_main" style="edgeStyle=none;html=1;strokeColor=#000000;strokeWidth=1;endArrow=none;startArrow=none" target="exercise_2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="exercise_line_3" edge="1" parent="1" source="exercise_main" style="edgeStyle=none;html=1;strokeColor=#000000;strokeWidth=1;endArrow=none;startArrow=none" target="exercise_3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="exercise_line_4" edge="1" parent="1" source="exercise_main" style="edgeStyle=none;html=1;strokeColor=#000000;strokeWidth=1;endArrow=none;startArrow=none" target="exercise_4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="exercise_line_5" edge="1" parent="1" source="exercise_main" style="edgeStyle=none;html=1;strokeColor=#000000;strokeWidth=1;endArrow=none;startArrow=none" target="exercise_5">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="exercise_line_6" edge="1" parent="1" source="exercise_main" style="edgeStyle=none;html=1;strokeColor=#000000;strokeWidth=1;endArrow=none;startArrow=none" target="exercise_6">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="tracking_main" parent="1" style="rounded=1;whiteSpace=wrap;html=1;strokeColor=#000000;strokeWidth=2;fillColor=none;fontSize=16;fontStyle=1" value="学习追踪" vertex="1">
+          <mxGeometry height="50" width="160" x="760" y="120" as="geometry" />
+        </mxCell>
+        <mxCell id="tracking_line" edge="1" parent="1" source="tracking_main" style="edgeStyle=none;html=1;strokeColor=#000000;strokeWidth=1;endArrow=none;startArrow=none">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="840" y="170" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="tracking_1" parent="1" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#000000;strokeWidth=1;fillColor=none;fontSize=12" value="学习记录" vertex="1">
+          <mxGeometry height="35" width="100" x="740" y="190" as="geometry" />
+        </mxCell>
+        <mxCell id="tracking_2" parent="1" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#000000;strokeWidth=1;fillColor=none;fontSize=12" value="问答统计" vertex="1">
+          <mxGeometry height="35" width="100" x="740" y="235" as="geometry" />
+        </mxCell>
+        <mxCell id="tracking_3" parent="1" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#000000;strokeWidth=1;fillColor=none;fontSize=12" value="正确率统计" vertex="1">
+          <mxGeometry height="35" width="100" x="740" y="280" as="geometry" />
+        </mxCell>
+        <mxCell id="tracking_4" parent="1" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#000000;strokeWidth=1;fillColor=none;fontSize=12" value="学习天数" vertex="1">
+          <mxGeometry height="35" width="100" x="850" y="190" as="geometry" />
+        </mxCell>
+        <mxCell id="tracking_5" parent="1" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#000000;strokeWidth=1;fillColor=none;fontSize=12" value="趋势分析" vertex="1">
+          <mxGeometry height="35" width="100" x="850" y="235" as="geometry" />
+        </mxCell>
+        <mxCell id="tracking_6" parent="1" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#000000;strokeWidth=1;fillColor=none;fontSize=12" value="错题本" vertex="1">
+          <mxGeometry height="35" width="100" x="850" y="280" as="geometry" />
+        </mxCell>
+        <mxCell id="tracking_line_1" edge="1" parent="1" source="tracking_main" style="edgeStyle=none;html=1;strokeColor=#000000;strokeWidth=1;endArrow=none;startArrow=none" target="tracking_1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="tracking_line_2" edge="1" parent="1" source="tracking_main" style="edgeStyle=none;html=1;strokeColor=#000000;strokeWidth=1;endArrow=none;startArrow=none" target="tracking_2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="tracking_line_3" edge="1" parent="1" source="tracking_main" style="edgeStyle=none;html=1;strokeColor=#000000;strokeWidth=1;endArrow=none;startArrow=none" target="tracking_3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="tracking_line_4" edge="1" parent="1" source="tracking_main" style="edgeStyle=none;html=1;strokeColor=#000000;strokeWidth=1;endArrow=none;startArrow=none" target="tracking_4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="tracking_line_5" edge="1" parent="1" source="tracking_main" style="edgeStyle=none;html=1;strokeColor=#000000;strokeWidth=1;endArrow=none;startArrow=none" target="tracking_5">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="tracking_line_6" edge="1" parent="1" source="tracking_main" style="edgeStyle=none;html=1;strokeColor=#000000;strokeWidth=1;endArrow=none;startArrow=none" target="tracking_6">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="kb_main" parent="1" style="rounded=1;whiteSpace=wrap;html=1;strokeColor=#000000;strokeWidth=2;fillColor=none;fontSize=16;fontStyle=1" value="知识库管理" vertex="1">
+          <mxGeometry height="50" width="160" x="1000" y="120" as="geometry" />
+        </mxCell>
+        <mxCell id="kb_line" edge="1" parent="1" source="kb_main" style="edgeStyle=none;html=1;strokeColor=#000000;strokeWidth=1;endArrow=none;startArrow=none">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1080" y="170" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="kb_1" parent="1" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#000000;strokeWidth=1;fillColor=none;fontSize=12" value="文档上传" vertex="1">
+          <mxGeometry height="35" width="100" x="980" y="190" as="geometry" />
+        </mxCell>
+        <mxCell id="kb_2" parent="1" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#000000;strokeWidth=1;fillColor=none;fontSize=12" value="文档处理" vertex="1">
+          <mxGeometry height="35" width="100" x="980" y="235" as="geometry" />
+        </mxCell>
+        <mxCell id="kb_3" parent="1" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#000000;strokeWidth=1;fillColor=none;fontSize=12" value="向量存储" vertex="1">
+          <mxGeometry height="35" width="100" x="980" y="280" as="geometry" />
+        </mxCell>
+        <mxCell id="kb_4" parent="1" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#000000;strokeWidth=1;fillColor=none;fontSize=12" value="知识检索" vertex="1">
+          <mxGeometry height="35" width="100" x="1090" y="190" as="geometry" />
+        </mxCell>
+        <mxCell id="kb_5" parent="1" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#000000;strokeWidth=1;fillColor=none;fontSize=12" value="知识库清空" vertex="1">
+          <mxGeometry height="35" width="100" x="1090" y="235" as="geometry" />
+        </mxCell>
+        <mxCell id="kb_6" parent="1" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#000000;strokeWidth=1;fillColor=none;fontSize=12" value="学科切换" vertex="1">
+          <mxGeometry height="35" width="100" x="1090" y="280" as="geometry" />
+        </mxCell>
+        <mxCell id="kb_line_1" edge="1" parent="1" source="kb_main" style="edgeStyle=none;html=1;strokeColor=#000000;strokeWidth=1;endArrow=none;startArrow=none" target="kb_1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="kb_line_2" edge="1" parent="1" source="kb_main" style="edgeStyle=none;html=1;strokeColor=#000000;strokeWidth=1;endArrow=none;startArrow=none" target="kb_2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="kb_line_3" edge="1" parent="1" source="kb_main" style="edgeStyle=none;html=1;strokeColor=#000000;strokeWidth=1;endArrow=none;startArrow=none" target="kb_3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="kb_line_4" edge="1" parent="1" source="kb_main" style="edgeStyle=none;html=1;strokeColor=#000000;strokeWidth=1;endArrow=none;startArrow=none" target="kb_4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="kb_line_5" edge="1" parent="1" source="kb_main" style="edgeStyle=none;html=1;strokeColor=#000000;strokeWidth=1;endArrow=none;startArrow=none" target="kb_5">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="kb_line_6" edge="1" parent="1" source="kb_main" style="edgeStyle=none;html=1;strokeColor=#000000;strokeWidth=1;endArrow=none;startArrow=none" target="kb_6">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="sys_main" parent="1" style="rounded=1;whiteSpace=wrap;html=1;strokeColor=#000000;strokeWidth=2;fillColor=none;fontSize=16;fontStyle=1" value="系统管理" vertex="1">
+          <mxGeometry height="50" width="160" x="1240" y="120" as="geometry" />
+        </mxCell>
+        <mxCell id="sys_line" edge="1" parent="1" source="sys_main" style="edgeStyle=none;html=1;strokeColor=#000000;strokeWidth=1;endArrow=none;startArrow=none">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1320" y="170" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="sys_1" parent="1" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#000000;strokeWidth=1;fillColor=none;fontSize=12" value="模型配置" vertex="1">
+          <mxGeometry height="35" width="100" x="1220" y="190" as="geometry" />
+        </mxCell>
+        <mxCell id="sys_2" parent="1" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#000000;strokeWidth=1;fillColor=none;fontSize=12" value="系统设置" vertex="1">
+          <mxGeometry height="35" width="100" x="1220" y="235" as="geometry" />
+        </mxCell>
+        <mxCell id="sys_3" parent="1" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#000000;strokeWidth=1;fillColor=none;fontSize=12" value="班级学情" vertex="1">
+          <mxGeometry height="35" width="100" x="1220" y="280" as="geometry" />
+        </mxCell>
+        <mxCell id="sys_4" parent="1" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#000000;strokeWidth=1;fillColor=none;fontSize=12" value="数据管理" vertex="1">
+          <mxGeometry height="35" width="100" x="1330" y="190" as="geometry" />
+        </mxCell>
+        <mxCell id="sys_5" parent="1" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#000000;strokeWidth=1;fillColor=none;fontSize=12" value="薄弱点分析" vertex="1">
+          <mxGeometry height="35" width="100" x="1330" y="235" as="geometry" />
+        </mxCell>
+        <mxCell id="sys_6" parent="1" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#000000;strokeWidth=1;fillColor=none;fontSize=12" value="日志管理" vertex="1">
+          <mxGeometry height="35" width="100" x="1330" y="280" as="geometry" />
+        </mxCell>
+        <mxCell id="sys_line_1" edge="1" parent="1" source="sys_main" style="edgeStyle=none;html=1;strokeColor=#000000;strokeWidth=1;endArrow=none;startArrow=none" target="sys_1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="sys_line_2" edge="1" parent="1" source="sys_main" style="edgeStyle=none;html=1;strokeColor=#000000;strokeWidth=1;endArrow=none;startArrow=none" target="sys_2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="sys_line_3" edge="1" parent="1" source="sys_main" style="edgeStyle=none;html=1;strokeColor=#000000;strokeWidth=1;endArrow=none;startArrow=none" target="sys_3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="sys_line_4" edge="1" parent="1" source="sys_main" style="edgeStyle=none;html=1;strokeColor=#000000;strokeWidth=1;endArrow=none;startArrow=none" target="sys_4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="sys_line_5" edge="1" parent="1" source="sys_main" style="edgeStyle=none;html=1;strokeColor=#000000;strokeWidth=1;endArrow=none;startArrow=none" target="sys_5">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="sys_line_6" edge="1" parent="1" source="sys_main" style="edgeStyle=none;html=1;strokeColor=#000000;strokeWidth=1;endArrow=none;startArrow=none" target="sys_6">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="main_line_1" edge="1" parent="1" source="title" style="edgeStyle=none;html=1;strokeColor=#000000;strokeWidth=2;endArrow=none;startArrow=none;entryX=0.5;entryY=0;exitX=0.5;exitY=1" target="user_main">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="main_line_2" edge="1" parent="1" source="title" style="edgeStyle=none;html=1;strokeColor=#000000;strokeWidth=2;endArrow=none;startArrow=none;entryX=0.5;entryY=0;exitX=0.5;exitY=1" target="qa_main">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="main_line_3" edge="1" parent="1" source="title" style="edgeStyle=none;html=1;strokeColor=#000000;strokeWidth=2;endArrow=none;startArrow=none;entryX=0.5;entryY=0;exitX=0.5;exitY=1" target="exercise_main">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="main_line_4" edge="1" parent="1" source="title" style="edgeStyle=none;html=1;strokeColor=#000000;strokeWidth=2;endArrow=none;startArrow=none;entryX=0.5;entryY=0;exitX=0.5;exitY=1" target="tracking_main">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="main_line_5" edge="1" parent="1" source="title" style="edgeStyle=none;html=1;strokeColor=#000000;strokeWidth=2;endArrow=none;startArrow=none;entryX=0.5;entryY=0;exitX=0.5;exitY=1" target="kb_main">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="main_line_6" edge="1" parent="1" source="title" style="edgeStyle=none;html=1;strokeColor=#000000;strokeWidth=2;endArrow=none;startArrow=none;entryX=0.5;entryY=0;exitX=0.5;exitY=1" target="sys_main">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

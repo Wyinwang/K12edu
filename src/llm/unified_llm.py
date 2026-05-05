@@ -10,12 +10,13 @@ import sys
 # 添加项目根目录到路径
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
 from config.settings import (
-    DASHSCOPE_API_KEY, QWEN_MODEL,
-    DEEPSEEK_API_KEY, DEEPSEEK_MODEL,
+    DASHSCOPE_API_KEY, DASHSCOPE_API_URL, DASHSCOPE_MODEL, QWEN_MODEL,
+    DEEPSEEK_API_KEY, DEEPSEEK_API_URL, DEEPSEEK_MODEL,
     TOUTIAO_API_KEY, TOUTIAO_MODEL,
-    HUNYUAN_API_KEY, HUNYUAN_MODEL,
+    HUNYUAN_API_KEY, HUNYUAN_SECRET_ID, HUNYUAN_MODEL,
     OPENAI_API_KEY, OPENAI_MODEL,
     GEMINI_API_KEY, GEMINI_MODEL,
+    OLLAMA_BASE_URL, OLLAMA_MODEL,
     LLM_PROVIDER
 )
 
@@ -29,7 +30,7 @@ class LLMFactory:
         创建聊天模型实例
 
         Args:
-            provider: LLM提供商 (qwen, deepseek, toutiao, hunyuan, openai)
+            provider: LLM提供商 (qwen, deepseek, toutiao, hunyuan, openai, ollama)
             model_name: 模型名称
             temperature: 温度参数
 
@@ -50,6 +51,8 @@ class LLMFactory:
             return LLMFactory._create_openai(model_name, temperature)
         elif provider == "gemini":
             return LLMFactory._create_gemini(model_name, temperature)
+        elif provider == "ollama":
+            return LLMFactory._create_ollama(model_name, temperature)
         else:
             raise ValueError(f"不支持的LLM提供商: {provider}")
 
@@ -57,9 +60,11 @@ class LLMFactory:
     def _create_qwen(model_name: Optional[str], temperature: float) -> BaseChatModel:
         """创建通义千问模型"""
         from langchain_community.chat_models import ChatTongyi
-        return ChatTongyi(
-            model=model_name or QWEN_MODEL,
-            dashscope_api_key=DASHSCOPE_API_KEY,
+        from langchain_openai import ChatOpenAI
+        return ChatOpenAI(
+            model=model_name or DASHSCOPE_MODEL,
+            api_key=DASHSCOPE_API_KEY,
+            base_url=DASHSCOPE_API_URL,
             temperature=temperature
         )
 
@@ -70,7 +75,7 @@ class LLMFactory:
         return ChatOpenAI(
             model=model_name or DEEPSEEK_MODEL,
             api_key=DEEPSEEK_API_KEY,
-            base_url="https://api.deepseek.com/v1",
+            base_url=DEEPSEEK_API_URL,
             temperature=temperature
         )
 
@@ -95,10 +100,7 @@ class LLMFactory:
         return ChatTencentHunyuan(
             model=model_name or HUNYUAN_MODEL,
             tencent_secret_key=HUNYUAN_API_KEY,
-            # 腾讯混元需要 secret_id 和 secret_key
-            # 这里假设 HUNYUAN_API_KEY 格式为 "secret_id:secret_key"
-            # 或者单独配置 HUNYUAN_SECRET_ID
-            tencent_secret_id=os.getenv("HUNYUAN_SECRET_ID", ""),
+            tencent_secret_id=HUNYUAN_SECRET_ID,
             temperature=temperature
         )
 
@@ -119,6 +121,16 @@ class LLMFactory:
         return ChatGoogleGenerativeAI(
             model=model_name or GEMINI_MODEL,
             google_api_key=GEMINI_API_KEY,
+            temperature=temperature
+        )
+
+    @staticmethod
+    def _create_ollama(model_name: Optional[str], temperature: float) -> BaseChatModel:
+        """创建Ollama本地模型"""
+        from langchain_ollama import ChatOllama
+        return ChatOllama(
+            model=model_name or OLLAMA_MODEL,
+            base_url=OLLAMA_BASE_URL,
             temperature=temperature
         )
 
